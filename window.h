@@ -1,13 +1,20 @@
 #pragma once
 #include <easyx.h>
+#include <vector>
 #include "Button.h"
 #include "Utils.h"
+#include "ÒôÀÖºĞ.h"
+
 class GameWindow:public MonoObject
 {
 public:
 	void onCreate();
-	void menu();
+	void musicMenu();
 	void onFrameUpdate();
 private:
 	IMAGE img1;
+	// ¼ÇÂ¼ÒôÀÖºĞÖ¸ÕëÓëÒôÀÖºĞ×´Ì¬
+	vector<ÒôÀÖºĞ*, bool> musicboxes;
+	// ¼ÇÂ¼¿ªÆôµÄÒôÀÖºĞ
+	ÒôÀÖºĞ* openingMusicbox;
 };

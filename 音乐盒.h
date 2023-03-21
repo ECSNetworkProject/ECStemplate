@@ -10,9 +10,10 @@ public:
 	void onCreate();
 	void onClick();
 	void onFrameUpdate();
+	void ToggleMusic();
+	bool IsOpen = false;
 private:
 	int leaveTime = 0;
 	DWORD startTime;
-	bool IsOpen = false;
 };
 

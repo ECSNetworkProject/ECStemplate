@@ -18,7 +18,7 @@ void InitMenu()
 {
 	clearAllObject();
 	GameWindow* window=CreateObject<GameWindow>(Utils::Rect{ 0,0,640, 480 });
-	window->menu();
+	window->musicMenu();
 }
 
 int main(void)

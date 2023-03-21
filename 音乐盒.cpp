@@ -14,13 +14,8 @@ void “Ù¿÷∫–::onClick()
 	cout << "“Ù¿÷∫–±ªµ„ª˜" << endl;
 	GameMusic("º”∑÷.wav");
 	CreateObject<coin>({});
-	IsOpen = !IsOpen;
-	if (IsOpen)
-	{
-		leaveTime = GameMusic(NowMusic);
-		startTime = GetTickCount64();
-	}
-	else CloseMusic(NowMusic);
+	// «–ªªø™πÿ◊¥Ã¨
+	ToggleMusic();
 }
 
 void “Ù¿÷∫–::onFrameUpdate()
@@ -49,5 +44,16 @@ void “Ù¿÷∫–::onFrameUpdate()
 		
 	}
 
+}
+
+void “Ù¿÷∫–::ToggleMusic()
+{
+	IsOpen = !IsOpen;
+	if (IsOpen)
+	{
+		leaveTime = GameMusic(NowMusic);
+		startTime = GetTickCount64();
+	}
+	else CloseMusic(NowMusic);
 }
 
