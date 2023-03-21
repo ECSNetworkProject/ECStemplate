@@ -44,7 +44,7 @@ private:
 	struct ObjectCompare {
 		bool operator()(const MonoObject* l, const MonoObject* r)const
 		{
-			return l->type < r->type;
+			return (l->type < r->type) || (l->type == r->type && l<r);
 		}
 	};
 	// 当前关卡活跃的物体

@@ -41,7 +41,6 @@ void MonoSystem::Run()
 	// 获取当前帧玩家操作
 	ExMessage msg;
 	bool hasMessage=peekmessage(&msg);
-	map<MonoObject*, bool> UIObjects;
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
 		// 给物体发送消息
 		if (hasMessage) noticeMessage(it->first,&msg);

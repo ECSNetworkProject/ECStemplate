@@ -3,6 +3,7 @@
 
 void coin::onCreate()
 {
+	canThrough = true;
 	initAnimation(Coin_rotate);
 	body.posx = rand() % 600;
 	body.posy = 0;

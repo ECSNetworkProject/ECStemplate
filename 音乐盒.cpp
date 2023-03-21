@@ -13,7 +13,6 @@ void 音乐盒::onCreate()
 
 void 音乐盒::onClick()
 {
-	cout << "音乐盒被点击" << endl;
 	GameMusic("加分.wav");
 	CreateObject<coin>({});
 	// 切换开关状态
