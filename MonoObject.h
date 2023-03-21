@@ -29,7 +29,7 @@ public:
 	objectType type=none;
 	// 物体唯一编号
 	int GetHashID();
-	// 能否穿越,为true情况不发生被动碰撞
+	// 能否穿越,为true情况可以撞到其他物体，但不能被其他物体撞到
 	bool canThrough = false;
 	// 物体创建时调用
 	virtual void onCreate();

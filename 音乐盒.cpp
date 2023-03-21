@@ -15,6 +15,7 @@ void “Ù¿÷∫–::onClick()
 {
 	GameMusic("º”∑÷.wav");
 	CreateObject<coin>({});
+	canThrough = true;
 	// «–ªªø™πÿ◊¥Ã¨
 	ToggleMusic();
 }
@@ -65,6 +66,6 @@ void “Ù¿÷∫–::ToggleMusic()
 
 void “Ù¿÷∫–::onCrash(MonoObject* collider)
 {
-	vx = -vx;
+	if (!canThrough) vx = -vx;
 }
 

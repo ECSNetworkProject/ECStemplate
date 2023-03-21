@@ -128,7 +128,8 @@ void MonoSystem::calculateMove()
 			m_crashObjects[make_pair(obj, crashObj_y)] = true;
 			if (!obj->canThrough) m_crashObjects[make_pair(crashObj_y, obj)] = true;
 		}
-		if (crashObj_x== nullptr && crashObj_y == nullptr)
+		if (obj->canThrough || 
+			(crashObj_x== nullptr && crashObj_y == nullptr))
 		{
 			// 改变body的位置
 			Utils::Rect positon = obj->body;
