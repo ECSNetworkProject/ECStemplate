@@ -41,9 +41,14 @@ void MonoSystem::Run()
 	// 获取当前帧玩家操作
 	ExMessage msg;
 	bool hasMessage=peekmessage(&msg);
+	// 过滤掉鼠标移动消息防止消息过多
+	while (hasMessage && msg.message== WM_MOUSEMOVE) hasMessage = peekmessage(&msg);
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
 		// 给物体发送消息
-		if (hasMessage) noticeMessage(it->first,&msg);
+		if (hasMessage)
+		{
+			noticeMessage(it->first, &msg);
+		}
 		// 执行物体帧更新
 		it->first->onFrameUpdate();
 		if (it->first->vx != 0 || it->first->vy != 0) m_moveingObjects.push(it->first);
