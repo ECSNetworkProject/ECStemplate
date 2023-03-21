@@ -8,7 +8,7 @@ enum objectType {
 	groud,
 	effect,
 	camera,
-	UI     //UI会最后绘制在屏幕上
+	UI     //标签顺序决定执行顺序
 };
 
 /// <summary>

@@ -40,8 +40,15 @@ private:
 	int hashID=0;
 	// 等待删除的物体
 	queue<MonoObject*> m_deletingObjects;
+	//自定义map的key排列顺序,根据物体标签顺序来排列
+	struct ObjectCompare {
+		bool operator()(const MonoObject* l, const MonoObject* r)const
+		{
+			return l->type < r->type;
+		}
+	};
 	// 当前关卡活跃的物体
-	map<MonoObject*, bool> m_activeObjects;
+	map<MonoObject*, bool, ObjectCompare> m_activeObjects;
 	// 当前帧要进行移动的物体
 	queue<MonoObject*> m_moveingObjects;
 	// 发生碰撞的物体,元组第一个值为主体

@@ -24,7 +24,6 @@ class AnimationManager :virtual public  MonoObject
 public:
     AnimationManager(); 
     virtual ~AnimationManager();
-    virtual void onCrash(MonoObject collider);
     virtual void onFrameUpdate();
 
     //≥ı ºªØ

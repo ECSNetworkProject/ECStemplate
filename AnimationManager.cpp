@@ -13,10 +13,6 @@ AnimationManager::~AnimationManager()
 	cout << "动画部分清除" << endl;
 }
 
-void AnimationManager::onCrash(MonoObject collider)
-{
-}
-
 void AnimationManager::onFrameUpdate()
 {
 }

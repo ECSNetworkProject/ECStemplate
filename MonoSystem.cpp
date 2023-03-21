@@ -19,14 +19,6 @@ void ShowCollide(Utils::Rect address,int color)
 	setlinecolor(WHITE);
 }
 
-// UI专用函数
-void NoticeUI(MonoObject* obj, bool hasMessage, ExMessage msg)
-{
-	// 通知UI接收玩家键鼠消息
-	if(hasMessage) obj->onGetMessage(msg);
-	obj->onFrameUpdate();
-}
-
 
 void MonoSystem::Run()
 {
@@ -51,13 +43,7 @@ void MonoSystem::Run()
 	bool hasMessage=peekmessage(&msg);
 	map<MonoObject*, bool> UIObjects;
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
-		// 抽离出UI
-		if (it->first->type == UI)
-		{
-			UIObjects[it->first] = true;
-			continue;
-		}
-		// 给除UI物体发送消息
+		// 给物体发送消息
 		if (hasMessage) noticeMessage(it->first,&msg);
 		// 执行物体帧更新
 		it->first->onFrameUpdate();
@@ -72,11 +58,6 @@ void MonoSystem::Run()
 	}
 	// 计算物体移动
 	calculateMove();
-	// 后调用UI
-	for (it = UIObjects.begin(); it != UIObjects.end(); it++)
-	{
-		NoticeUI(it->first, hasMessage, msg);
-	}
 }
 
 

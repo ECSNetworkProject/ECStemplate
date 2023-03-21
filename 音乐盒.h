@@ -11,6 +11,7 @@ public:
 	void onClick();
 	void onFrameUpdate();
 	void ToggleMusic();
+	void onCrash(MonoObject* collider);
 	bool IsOpen = false;
 private:
 	int leaveTime = 0;

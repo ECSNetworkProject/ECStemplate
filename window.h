@@ -14,7 +14,7 @@ public:
 private:
 	IMAGE img1;
 	// ¼ÇÂ¼ÒôÀÖºĞÖ¸ÕëÓëÒôÀÖºĞ×´Ì¬
-	vector<ÒôÀÖºĞ*, bool> musicboxes;
+	vector<ÒôÀÖºĞ*> musicboxes;
 	// ¼ÇÂ¼¿ªÆôµÄÒôÀÖºĞ
 	ÒôÀÖºĞ* openingMusicbox;
 };
