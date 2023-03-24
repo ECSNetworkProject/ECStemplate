@@ -10,7 +10,7 @@
 #include "SceneConfig.h"
 #include "GameVoice.h"
 using namespace Utils;
-Button::Button()
+CustomButton::CustomButton()
 {
 	canThrough = true;
 	type = UI;
@@ -18,7 +18,7 @@ Button::Button()
 
 
 
-void Button::onFrameUpdate()
+void CustomButton::onFrameUpdate()
 {
 	setlinecolor(RGB(255, 255, 255));
 	setfillcolor(0xAAAAAA);
@@ -31,7 +31,7 @@ void Button::onFrameUpdate()
 	setbkcolor(WHITE);
 
 }
-void Button::onGetMessage(ExMessage message)
+void CustomButton::onGetMessage(ExMessage message)
 {
 	if (message.message == WM_LBUTTONDOWN &&
 		message.x >= body.posx && message.x <= body.posx + body.width &&
@@ -41,6 +41,6 @@ void Button::onGetMessage(ExMessage message)
 	}
 }
 
-void Button::onClick()
+void CustomButton::onClick()
 {
 }

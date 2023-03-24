@@ -3,7 +3,7 @@
 #include "AnimationManager.h"
 
 // ¡‚–ŒºÃ≥–
-class “Ù¿÷∫– :public Button,AnimationManager
+class “Ù¿÷∫– :public CustomButton,AnimationManager
 {
 public:
 	string NowMusic;

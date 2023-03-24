@@ -6,11 +6,14 @@
 #include "head.h"
 #include "SceneConfig.h"
 using namespace std;
+using namespace easy2d;
 
 
-class MonoSystem
+class MonoSystem : public Node
 {
 public:
+	// 对接easy2d
+	void onUpdate();
 	// 开启后使用红色标识真实的碰撞体,绿色标识设置为可穿越的碰撞体
 	bool debugModel = true;
 	static MonoSystem* GetInstance();

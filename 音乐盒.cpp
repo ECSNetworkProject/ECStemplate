@@ -6,7 +6,7 @@
 void ÒôÀÖºÐ::onCreate()
 {
 	type = UI;
-	initAnimation(Music,body.width,body.height);
+	initAnimation(Musicbox,body.width,body.height);
 	vx = 100;
 	canThrough = false;
 }
@@ -22,7 +22,7 @@ void ÒôÀÖºÐ::onClick()
 
 void ÒôÀÖºÐ::onFrameUpdate()
 {
-	Button::onFrameUpdate();
+	CustomButton::onFrameUpdate();
 	// ×óÓÒÒÆ¶¯
 	if (body.posx > 640 || body.posx < 0)
 	{

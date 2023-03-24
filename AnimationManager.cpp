@@ -78,7 +78,7 @@ void AnimationManager::initAnimation(animationType animType,int sizeX,int sizeY)
 	case Man_Idle:
 		fileName = Utils::FindAnimationFiles("./Image/Animation", "Idle");
 		break;
-	case Music:
+	case Musicbox:
 		fileName = Utils::FindAnimationFiles("./Image/Animation", "“Ù¿÷∂Ø–ß");
 		break;
 	default:

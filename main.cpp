@@ -5,7 +5,7 @@
 #include "SceneConfig.h"
 #include <time.h>
 #include "window.h"
-
+using namespace easy2d;
 
 
 void clearAllObject()
@@ -21,33 +21,27 @@ void InitMenu()
 	window->musicMenu();
 }
 
+
+
 int main(void)
 {
-	InitMenu();
-	BeginBatchDraw();
-	// 用于控制每秒多少帧
-	clock_t lastFrame = clock();
-	int frameCnt = 0;
-	int lastflag = 0;
-	while (1)
-	{
-		// 固定时间戳运行一次
-		if (clock() - lastFrame > frameCnt * 1000 / Sceneconfig::GetInstance()->MaxFrame)
-		{
-			
-			FlushBatchDraw();//直接输出到easyx窗口中
-			cleardevice();
-			MonoSystem::GetInstance()->Run();
-			frameCnt++;
-			if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
-			{
-				frameCnt = 0;
-				cout << Sceneconfig::GetInstance()->MaxFrame << "帧运行时间" << clock() - lastFrame << endl;
-				lastFrame = clock();
-			}
-			// cout << "第" << frameCnt << "帧:" << clock() << endl;
-		}
-	}
-	EndBatchDraw();//绘制到easyx窗口
+    InitMenu();
+    if (Game::init())
+    {
+        Renderer::showFps(true);
+        // 修改窗口标题
+        Window::setTitle("明日方舟对战版");
+        // 创建一个空场景
+        Scene* scene = new Scene;
+        // 进入 scene 场景
+        SceneManager::enter(scene);
+        // 在场景中加入关卡管理器，而不使用Easy2D原本的管理
+        scene->addChild(MonoSystem::GetInstance());
+        // 初始化窗口
+        Game::start();
+        // 释放内存
+        delete scene;
+    }
+    Game::destroy();
 	return 0;
 }

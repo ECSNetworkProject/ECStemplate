@@ -2,10 +2,10 @@
 #include <iostream>
 #include "MonoObject.h"
 using namespace std;
-class Button :virtual public MonoObject
+class CustomButton :virtual public MonoObject
 {
 public:
-	Button();
+	CustomButton();
 	const wchar_t* Text=L"";
 	void onFrameUpdate();
 	void onGetMessage(ExMessage message);

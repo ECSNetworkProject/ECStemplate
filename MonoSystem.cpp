@@ -1,5 +1,10 @@
 #include "MonoSystem.h"
 
+void MonoSystem::onUpdate()
+{
+	Run();
+}
+
 MonoSystem* MonoSystem::GetInstance()
 {
 	// ¶öººÊ½

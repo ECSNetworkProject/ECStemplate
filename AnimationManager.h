@@ -17,7 +17,7 @@ enum animationType
     Pangxie_walk,
     Bat_fly,
     Coin_rotate,
-    Music
+    Musicbox
 };
 class AnimationManager :virtual public  MonoObject
 {
