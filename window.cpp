@@ -12,6 +12,13 @@ void GameWindow::onCreate()
 void GameWindow::musicMenu()
 {
 	initgraph(getSize().width, getSize().height, EX_SHOWCONSOLE);
+	Window::setSize(getSize().width, getSize().height);
+	// easy2d
+	/*auto img = gcnew Sprite();
+	bool check = img->open("Image/开始界面背景.jpg");
+	img->setSize(getSize().width, getSize().height);
+	this->addChild(img);*/
+	// easyx;
 	loadimage(&img1, _T("./Image/开始界面背景.jpg"), getSize().width, getSize().height);
 	// 创建音乐盒1
 	音乐盒* musicBox = CreateObject<音乐盒>(Utils::Rect{ 110,310,100, 100 });

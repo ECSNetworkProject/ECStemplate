@@ -5,6 +5,7 @@
 
 void “Ù¿÷∫–::onCreate()
 {
+	CustomButton::onCreate();
 	type = UI;
 	initAnimation(Musicbox,getSize().width, getSize().height);
 	vx = 100;

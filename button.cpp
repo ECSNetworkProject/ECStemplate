@@ -10,12 +10,15 @@
 #include "SceneConfig.h"
 #include "GameVoice.h"
 using namespace Utils;
-CustomButton::CustomButton()
+void CustomButton::onCreate()
 {
 	canThrough = true;
 	type = UI;
+	// easy2d,无需设置节点坐标，addchild之后节点同步移动
+	button = ShapeNode::createRect(getSize());
+	button->setFillColor(Color::Gray);
+	this->addChild(button);
 }
-
 
 
 void CustomButton::onFrameUpdate()
@@ -32,7 +35,6 @@ void CustomButton::onFrameUpdate()
 	outtextxy(getPosX() + (getSize().width - textWide) / 2, 
 		getPosY() + (getSize().height - textHeight) / 2, Text);
 	setbkcolor(WHITE);
-
 }
 void CustomButton::onGetMessage(ExMessage message)
 {

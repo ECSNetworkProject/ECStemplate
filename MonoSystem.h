@@ -69,6 +69,9 @@ inline static T* CreateObject(Utils::Rect body)
 	//开始创建
 	MonoObject* newObject = new T();
 	MonoSystem::GetInstance()->AddObject(newObject);
+	// 加入到管理器当中,用于easy2d的显示
+	MonoSystem::GetInstance()->addChild(newObject);
+	// 设置相关参数
 	newObject->setPos(body.posx,body.posy);
 	newObject->setSize(body.width, body.height);
 	newObject->hashId = ++MonoSystem::GetInstance()->hashID;

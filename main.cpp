@@ -25,7 +25,6 @@ void InitMenu()
 
 int main(void)
 {
-    InitMenu();
     if (Game::init())
     {
         Renderer::showFps(true);
@@ -37,6 +36,8 @@ int main(void)
         SceneManager::enter(scene);
         // 在场景中加入关卡管理器，而不使用Easy2D原本的管理
         scene->addChild(MonoSystem::GetInstance());
+        // easyx 初始化
+        InitMenu();
         // 初始化窗口
         Game::start();
         // 释放内存

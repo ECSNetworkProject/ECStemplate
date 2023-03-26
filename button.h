@@ -5,10 +5,12 @@ using namespace std;
 class CustomButton :virtual public MonoObject
 {
 public:
-	CustomButton();
+	void onCreate();
 	const wchar_t* Text=L"";
 	void onFrameUpdate();
 	void onGetMessage(ExMessage message);
 	// 按钮被点击时调用
 	virtual void onClick();
+protected:
+	ShapeNode* button;
 };
