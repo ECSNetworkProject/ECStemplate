@@ -1,5 +1,6 @@
 #pragma once
 #include "head.h"
+using namespace easy2d;
 
 enum objectType {
 	none,
@@ -14,14 +15,13 @@ enum objectType {
 /// <summary>
 /// 场景中的物体都要继承
 /// </summary>
-class MonoObject
+class MonoObject:virtual public Node
 {
 public:
 	// 物体数据，方便起见直接放monoobject就行
 	int life = 5;
 	int score = 0;
-	// 获取物体坐标与体积
-	Utils::Rect body;
+	Utils::Rect GetBody();
 	// 物体移动速度，单位分别为m/s,没有移动速度的物体不会主动产生碰撞
 	float vx = 0;
 	float vy = 0;

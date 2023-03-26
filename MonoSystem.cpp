@@ -1,8 +1,24 @@
 #include "MonoSystem.h"
 
+// 用于控制每秒多少帧
+clock_t lastFrame = clock();
+int frameCnt = 0;
+
 void MonoSystem::onUpdate()
 {
-	Run();
+	// 固定时间戳运行一次,保证帧同步
+	if (clock() - lastFrame > frameCnt * 1000 / Sceneconfig::GetInstance()->MaxFrame)
+	{
+		Run();
+		frameCnt++;
+		if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
+		{
+			frameCnt = 0;
+			cout << Sceneconfig::GetInstance()->MaxFrame << "帧运行时间" << clock() - lastFrame << endl;
+			lastFrame = clock();
+		}
+		// cout << "第" << frameCnt << "帧:" << clock() << endl;
+	}
 }
 
 MonoSystem* MonoSystem::GetInstance()
@@ -13,14 +29,14 @@ MonoSystem* MonoSystem::GetInstance()
 }
 
 // 显示碰撞体边框
-void ShowCollide(Utils::Rect address,int color)
+void ShowCollide(Node* address,int color)
 {
 	// 设置线条颜色
 	setlinecolor(color);
 	// 绘制矩形
-	rectangle((int)address.posx, (int)address.posy,
-		(int)address.posx + (int)address.width,
-		(int)address.posy + (int)address.height);
+	rectangle((int)address->getPosX(), (int)address->getPosY(),
+		(int)address->getPosX() + (int)address->getSize().width,
+		(int)address->getPosY() + (int)address->getSize().height);
 	setlinecolor(WHITE);
 }
 
@@ -61,8 +77,8 @@ void MonoSystem::Run()
 		if (debugModel)
 		{
 			// 不可穿越物体绘制成红色，可穿越物体绘制成绿色
-			if (!it->first->canThrough) ShowCollide(it->first->body, RED);
-			else ShowCollide(it->first->body, GREEN);
+			if (!it->first->canThrough) ShowCollide(it->first, RED);
+			else ShowCollide(it->first, GREEN);
 		}
 	}
 	// 计算物体移动
@@ -97,7 +113,8 @@ void MonoSystem::calculateMove()
 		float x = obj->vx / Sceneconfig::GetInstance()->MaxFrame;
 		float y = obj->vy / Sceneconfig::GetInstance()->MaxFrame;
 		// 无碰撞情况下理想的运动位置
-		Utils::Rect address = Utils::Rect{ obj->body.posx + x,obj->body.posy + y ,obj->body.width,obj->body.height };
+		Utils::Rect address = Utils::Rect{ obj->getPosX() + x,obj->getPosY() + y ,
+											obj->getSize().width,obj->getSize().height};
 		
 		// 获取理想运动位置处所有可能会碰到的物体（可穿越物体不计算）
 		vector<MonoObject*> crashObjs = caculateCrash(address);
@@ -110,13 +127,13 @@ void MonoSystem::calculateMove()
 			if (it->GetHashID() == obj->GetHashID()) continue;
 			// x方向上碰到的第一个物体
 			if (crashObj_x== nullptr ||
-				abs(crashObj_x->body.posx - address.posx) < abs(it->body.posx - address.posx))
+				abs(crashObj_x->getPosX() - address.posx) < abs(it->getPosX() - address.posx))
 			{
 				crashObj_x = it;
 			}
 			// y方向上碰到的第一个物体
 			if (crashObj_y == nullptr ||
-				abs(crashObj_y->body.posy - address.posy) < abs(it->body.posy - address.posy))
+				abs(crashObj_y->getPosY() - address.posy) < abs(it->getPosY() - address.posy))
 			{
 				crashObj_y = it;
 			}
@@ -137,10 +154,7 @@ void MonoSystem::calculateMove()
 			(crashObj_x== nullptr && crashObj_y == nullptr))
 		{
 			// 改变body的位置
-			Utils::Rect positon = obj->body;
-			positon.posx += x;
-			positon.posy += y;
-			obj->body = positon;
+			obj->setPos(address.posx,address.posy) ;
 		}
 		
 	}
@@ -156,7 +170,8 @@ vector<MonoObject*> MonoSystem::caculateCrash(Utils::Rect address)
 	map<MonoObject*, bool>::iterator it;
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
 		// 计算所有不能穿越的物体的碰撞情况
-		if (!it->first->canThrough && Utils::CrossLine(it->first->body, address))
+		if (!it->first->canThrough && Utils::CrossLine(
+			it->first->GetBody(), address))
 		{
 			crashObjs.push_back(it->first);
 		}

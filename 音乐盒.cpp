@@ -6,7 +6,7 @@
 void ÒôÀÖºÐ::onCreate()
 {
 	type = UI;
-	initAnimation(Musicbox,body.width,body.height);
+	initAnimation(Musicbox,getSize().width, getSize().height);
 	vx = 100;
 	canThrough = false;
 }
@@ -24,13 +24,13 @@ void ÒôÀÖºÐ::onFrameUpdate()
 {
 	CustomButton::onFrameUpdate();
 	// ×óÓÒÒÆ¶¯
-	if (body.posx > 640 || body.posx < 0)
+	if (getPosX() > 640 || getPosX() < 0)
 	{
 		vx = -vx;
 	}
 	if (IsOpen)
 	{
-		playAnimation(body.posx, body.posy);
+		playAnimation(getPosX(), getPosY());
 		// ¼ÆËãÊ£ÓàºÁÃë
 		int temp = leaveTime - GetTickCount64() + startTime;
 		// Ê±¼äµ½ÁË¹Ø±ÕÒôÀÖ
@@ -46,8 +46,8 @@ void ÒôÀÖºÐ::onFrameUpdate()
 		const wchar_t* strTime = Utils::multiByteToWideChar(timeStamp);
 		int textWide = textwidth(strTime);
 		int textHeight = textheight(strTime);
-		outtextxy(body.posx + (body.width - textWide) / 2,
-			body.posy + (body.height - textHeight) / 4, strTime);
+		outtextxy(getPosX() + (getSize().width - textWide) / 2,
+			getPosY() + (getSize().height - textHeight) / 4, strTime);
 		
 	}
 

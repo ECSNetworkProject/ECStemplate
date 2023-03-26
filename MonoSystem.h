@@ -69,7 +69,8 @@ inline static T* CreateObject(Utils::Rect body)
 	//开始创建
 	MonoObject* newObject = new T();
 	MonoSystem::GetInstance()->AddObject(newObject);
-	newObject->body = body;
+	newObject->setPos(body.posx,body.posy);
+	newObject->setSize(body.width, body.height);
 	newObject->hashId = ++MonoSystem::GetInstance()->hashID;
 	newObject->onCreate();
 	// 动态转化

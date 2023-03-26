@@ -11,8 +11,8 @@ void GameWindow::onCreate()
 
 void GameWindow::musicMenu()
 {
-	initgraph(body.width, body.height, EX_SHOWCONSOLE);
-	loadimage(&img1, _T("./Image/开始界面背景.jpg"), body.width, body.height);
+	initgraph(getSize().width, getSize().height, EX_SHOWCONSOLE);
+	loadimage(&img1, _T("./Image/开始界面背景.jpg"), getSize().width, getSize().height);
 	// 创建音乐盒1
 	音乐盒* musicBox = CreateObject<音乐盒>(Utils::Rect{ 110,310,100, 100 });
 	musicBox->Text = L"音乐盒";

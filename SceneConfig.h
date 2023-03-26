@@ -10,7 +10,7 @@ class Sceneconfig
 {
 public:
 	static Sceneconfig* GetInstance();
-	int MaxFrame = 120;
+	int MaxFrame = 60;
 private:
 	Sceneconfig();
 };

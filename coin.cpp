@@ -5,15 +5,15 @@ void coin::onCreate()
 {
 	canThrough = true;
 	initAnimation(Coin_rotate);
-	body.posx = rand() % 600;
-	body.posy = 0;
+	setPosX(rand() % 600);
+	setPosY(0);
 	vy = -100;
 }
 
 void coin::onFrameUpdate()
 {
-	playAnimation(body.posx, body.posy);
+	playAnimation(getPosX(), getPosY());
 	vy += 1;
-	if (body.posy > 800) 
+	if (getPosY() > 800)
 		DestroyObject(this);
 }
