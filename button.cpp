@@ -7,7 +7,6 @@
 #include"button.h"
 #include "head.h"
 #include "SceneConfig.h"
-#include "GameVoice.h"
 using namespace Utils;
 void CustomButton::onCreate()
 {

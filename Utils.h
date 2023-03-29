@@ -1,6 +1,5 @@
 #pragma once
 #include <windows.h>
-#include "GameVoice.h"
 #include<io.h>
 #include <vector>
 #include<iostream>

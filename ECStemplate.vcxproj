@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="button.cpp" />
     <ClCompile Include="coin.cpp" />
-    <ClCompile Include="GameVoice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MonoObject.cpp" />
     <ClCompile Include="MonoSystem.cpp" />
@@ -140,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="coin.h" />
-    <ClInclude Include="GameVoice.h" />
     <ClInclude Include="head.h" />
     <ClInclude Include="MonoObject.h" />
     <ClInclude Include="MonoSystem.h" />

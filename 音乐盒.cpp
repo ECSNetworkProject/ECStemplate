@@ -1,6 +1,5 @@
 #include "“Ù¿÷∫–.h"
 #include "MonoSystem.h"
-#include "GameVoice.h"
 #include "coin.h"
 
 void “Ù¿÷∫–::onCreate()
@@ -13,7 +12,7 @@ void “Ù¿÷∫–::onCreate()
 
 void “Ù¿÷∫–::onClick()
 {
-	GameMusic("º”∑÷.wav");
+	// GameMusic("º”∑÷.wav");
 	CreateObject<coin>({});
 	canThrough = true;
 	// «–ªªø™πÿ◊¥Ã¨
@@ -28,17 +27,6 @@ void “Ù¿÷∫–::onFrameUpdate()
 	{
 		vx = -vx;
 	}
-	if (IsOpen)
-	{
-		// º∆À„ £”‡∫¡√Î
-		int temp = leaveTime - GetTickCount64() + startTime;
-		//  ±º‰µΩ¡Àπÿ±’“Ù¿÷
-		if (temp < 0)
-		{
-			IsOpen = false;
-			return;
-		}
-	}
 
 }
 
@@ -47,10 +35,14 @@ void “Ù¿÷∫–::ToggleMusic()
 	IsOpen = !IsOpen;
 	if (IsOpen)
 	{
-		leaveTime = GameMusic(NowMusic);
-		startTime = GetTickCount64();
+		button->setFillColor(Color::Blue);
+		// leaveTime = GameMusic(NowMusic);
+		// startTime = GetTickCount64();
 	}
-	else CloseMusic(NowMusic);
+	else
+	{
+		button->setFillColor(Color::Gray);
+	}
 }
 
 void “Ù¿÷∫–::onCrash(MonoObject* collider)
