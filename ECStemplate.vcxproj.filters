@@ -25,14 +25,14 @@
     <Filter Include="源文件\Objects">
       <UniqueIdentifier>{64dafdd4-124f-4310-8e8e-5ed1dd72e6f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Custom">
+      <UniqueIdentifier>{9e26670a-6152-4374-92fe-8fb829b0f070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Custom">
+      <UniqueIdentifier>{90e879cf-a416-4d81-8f9e-93c63d49f9ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="button.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="coin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="GameVoice.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -42,26 +42,26 @@
     <ClCompile Include="SceneConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="window.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="音乐盒.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MonoObject.cpp">
       <Filter>源文件\Objects</Filter>
     </ClCompile>
     <ClCompile Include="MonoSystem.cpp">
       <Filter>源文件\System</Filter>
     </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>源文件\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="音乐盒.cpp">
+      <Filter>源文件\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="coin.cpp">
+      <Filter>源文件\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>源文件\Custom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="button.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="coin.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="GameVoice.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -74,17 +74,23 @@
     <ClInclude Include="Utils.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="window.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="音乐盒.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MonoSystem.h">
       <Filter>头文件\System</Filter>
     </ClInclude>
     <ClInclude Include="MonoObject.h">
       <Filter>头文件\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>头文件\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>头文件\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="音乐盒.h">
+      <Filter>头文件\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="coin.h">
+      <Filter>头文件\Custom</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

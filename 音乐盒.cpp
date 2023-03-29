@@ -38,7 +38,6 @@ void “Ù¿÷∫–::onFrameUpdate()
 			IsOpen = false;
 			return;
 		}
-		
 	}
 
 }

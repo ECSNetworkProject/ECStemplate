@@ -13,4 +13,6 @@ public:
 protected:
 	ShapeNode* button;
 	Text* text;
+	// ¼ÇÂ¼Êó±ê×´Ì¬
+	bool MouseStatus=false;
 };

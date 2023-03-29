@@ -27,6 +27,20 @@ void CustomButton::onCreate()
 
 void CustomButton::onFrameUpdate()
 {
+	// 判断点击
+	if (!MouseStatus && Input::isDown(MouseCode::Left))
+	{
+		// 获取自身边界
+		auto Rect = this->getBoundingBox();
+		// 判断点是否在边界内部
+		if (Rect.containsPoint(Input::getMousePos()))
+		{
+			MouseStatus = true;
+			onClick();
+		}
+	}
+	// 需要记录鼠标状态，否则会出现持续按压
+	if (Input::isRelease(MouseCode::Left)) MouseStatus = false;
 }
 
 

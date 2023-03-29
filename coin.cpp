@@ -7,6 +7,9 @@ void coin::onCreate()
 	setPosX(rand() % 600);
 	setPosY(0);
 	vy = -100;
+	img = gcnew Sprite;
+	img->open("Image/coin1.png");
+	this->addChild(img);
 }
 
 void coin::onFrameUpdate()

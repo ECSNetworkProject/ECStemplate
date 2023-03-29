@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <easyx.h>
 #include "MonoSystem.h"
 #include "head.h"
 #include "SceneConfig.h"
