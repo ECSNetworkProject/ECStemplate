@@ -7,7 +7,6 @@ class CustomButton :virtual public MonoObject
 public:
 	void onCreate();
 	void onFrameUpdate();
-	void onGetMessage(ExMessage message);
 	// 按钮被点击时调用
 	virtual void onClick();
 	virtual ~CustomButton();

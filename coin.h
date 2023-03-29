@@ -1,6 +1,6 @@
 #pragma once
-#include "AnimationManager.h"
-class coin :public AnimationManager
+#include "MonoObject.h"
+class coin :public MonoObject
 {
 public:
 	void onCreate();

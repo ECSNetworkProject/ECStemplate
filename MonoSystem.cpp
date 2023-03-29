@@ -31,6 +31,7 @@ MonoSystem* MonoSystem::GetInstance()
 // 显示碰撞体边框
 void ShowCollide(Node* address,int color)
 {
+	/*
 	// 设置线条颜色
 	setlinecolor(color);
 	// 绘制矩形
@@ -38,6 +39,7 @@ void ShowCollide(Node* address,int color)
 		(int)address->getPosX() + (int)address->getSize().width,
 		(int)address->getPosY() + (int)address->getSize().height);
 	setlinecolor(WHITE);
+	*/
 }
 
 
@@ -61,17 +63,7 @@ void MonoSystem::Run()
 	}
 	// 创建迭代器，准备执行其他物体的动作
 	map<MonoObject*, bool>::iterator it; 
-	// 获取当前帧玩家操作
-	ExMessage msg;
-	bool hasMessage=peekmessage(&msg);
-	// 过滤掉鼠标移动消息防止消息过多
-	while (hasMessage && msg.message== WM_MOUSEMOVE) hasMessage = peekmessage(&msg);
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
-		// 给物体发送消息
-		if (hasMessage)
-		{
-			noticeMessage(it->first, &msg);
-		}
 		// 执行物体帧更新
 		it->first->onFrameUpdate();
 		if (it->first->vx != 0 || it->first->vy != 0) m_moveingObjects.push(it->first);
@@ -79,8 +71,8 @@ void MonoSystem::Run()
 		if (debugModel)
 		{
 			// 不可穿越物体绘制成红色，可穿越物体绘制成绿色
-			if (!it->first->canThrough) ShowCollide(it->first, RED);
-			else ShowCollide(it->first, GREEN);
+			//if (!it->first->canThrough) ShowCollide(it->first, RED);
+			// else ShowCollide(it->first, GREEN);
 		}
 	}
 	// 计算物体移动
@@ -98,10 +90,6 @@ void MonoSystem::DeleteObject(MonoObject* obj)
 	m_deletingObjects.push(obj);
 }
 
-void MonoSystem::noticeMessage(MonoObject* obj, ExMessage* msg)
-{
-	obj->onGetMessage(*msg);
-}
 
 void MonoSystem::calculateMove()
 {

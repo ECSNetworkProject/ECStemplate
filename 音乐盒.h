@@ -1,9 +1,8 @@
 #pragma once
 #include "button.h"
-#include "AnimationManager.h"
 
 // ¡‚–ŒºÃ≥–
-class “Ù¿÷∫– :public CustomButton,AnimationManager
+class “Ù¿÷∫– :public CustomButton
 {
 public:
 	string NowMusic;

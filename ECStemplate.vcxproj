@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="coin.cpp" />
     <ClCompile Include="GameVoice.cpp" />
@@ -135,12 +134,10 @@
     <ClCompile Include="MonoObject.cpp" />
     <ClCompile Include="MonoSystem.cpp" />
     <ClCompile Include="SceneConfig.cpp" />
-    <ClCompile Include="tools.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="音乐盒.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="coin.h" />
     <ClInclude Include="GameVoice.h" />
@@ -148,7 +145,6 @@
     <ClInclude Include="MonoObject.h" />
     <ClInclude Include="MonoSystem.h" />
     <ClInclude Include="SceneConfig.h" />
-    <ClInclude Include="tools.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="音乐盒.h" />

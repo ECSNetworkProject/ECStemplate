@@ -7,7 +7,6 @@ void “Ù¿÷∫–::onCreate()
 {
 	CustomButton::onCreate();
 	type = UI;
-	initAnimation(Musicbox,getSize().width, getSize().height);
 	vx = 100;
 	canThrough = false;
 }
@@ -31,7 +30,6 @@ void “Ù¿÷∫–::onFrameUpdate()
 	}
 	if (IsOpen)
 	{
-		playAnimation(getPosX(), getPosY());
 		// º∆À„ £”‡∫¡√Î
 		int temp = leaveTime - GetTickCount64() + startTime;
 		//  ±º‰µΩ¡Àπÿ±’“Ù¿÷
@@ -40,15 +38,6 @@ void “Ù¿÷∫–::onFrameUpdate()
 			IsOpen = false;
 			return;
 		}
-		// º∆À„œ‘ æµƒ ±º‰¥¡
-		string timeStamp;
-		timeStamp += to_string(temp / 60000);
-		timeStamp += ":" + to_string(temp % 60000 / 1000);
-		const wchar_t* strTime = Utils::multiByteToWideChar(timeStamp);
-		int textWide = textwidth(strTime);
-		int textHeight = textheight(strTime);
-		outtextxy(getPosX() + (getSize().width - textWide) / 2,
-			getPosY() + (getSize().height - textHeight) / 4, strTime);
 		
 	}
 

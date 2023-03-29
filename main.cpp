@@ -36,7 +36,7 @@ int main(void)
         SceneManager::enter(scene);
         // 在场景中加入关卡管理器，而不使用Easy2D原本的管理
         scene->addChild(MonoSystem::GetInstance());
-        // easyx 初始化
+        // 初始化菜单
         InitMenu();
         // 初始化窗口
         Game::start();

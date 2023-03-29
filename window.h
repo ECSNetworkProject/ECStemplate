@@ -1,5 +1,4 @@
 #pragma once
-#include <easyx.h>
 #include <vector>
 #include "Button.h"
 #include "Utils.h"
@@ -12,7 +11,6 @@ public:
 	void musicMenu();
 	void onFrameUpdate();
 private:
-	IMAGE img1;
 	// ¼ÇÂ¼ÒôÀÖºĞÖ¸ÕëÓëÒôÀÖºĞ×´Ì¬
 	vector<ÒôÀÖºĞ*> musicboxes;
 	// ¼ÇÂ¼¿ªÆôµÄÒôÀÖºĞ

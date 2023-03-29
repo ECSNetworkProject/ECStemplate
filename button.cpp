@@ -1,5 +1,4 @@
 #include <iostream>
-#include "easyx.h"
 #include<graphics.h>
 #include<stdio.h>
 #include<vector>
@@ -28,22 +27,8 @@ void CustomButton::onCreate()
 
 void CustomButton::onFrameUpdate()
 {
-	setlinecolor(RGB(255, 255, 255));
-	setfillcolor(0xAAAAAA);
-	setbkcolor(BLACK);
-	setbkmode(TRANSPARENT);
-	fillrectangle(getPosX(), getPosY(), 
-		getPosX() + getSize().width, getPosY() + getSize().height);
 }
-void CustomButton::onGetMessage(ExMessage message)
-{
-	if (message.message == WM_LBUTTONDOWN &&
-		message.x >= getPosX() && message.x <= getPosX() + getSize().width &&
-		message.y >= getPosY() && message.y <= getPosY() + getSize().height)
-	{
-		onClick();
-	}
-}
+
 
 void CustomButton::onClick()
 {

@@ -37,8 +37,6 @@ public:
 	virtual void onCrash(MonoObject* collider);
 	// 每帧调用
 	virtual void onFrameUpdate();
-	// 获取玩家输入的消息(不包含鼠标移动消息）
-	virtual void onGetMessage(ExMessage message);
 	// 友元函数，用于修改哈希id
 	template <typename T>
 	friend T* CreateObject(Utils::Rect body);

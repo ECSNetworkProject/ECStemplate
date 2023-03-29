@@ -58,7 +58,6 @@ private:
 	map < pair<MonoObject*, MonoObject*>,bool> m_crashObjects;
 	void AddObject(MonoObject* obj);
 	void DeleteObject(MonoObject* obj);
-	void noticeMessage(MonoObject* obj, ExMessage* msg);
 	void calculateMove();
 	void noticeCrash();
 };

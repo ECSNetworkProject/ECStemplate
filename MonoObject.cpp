@@ -24,9 +24,7 @@ void MonoObject::onFrameUpdate()
 {
 }
 
-void MonoObject::onGetMessage(ExMessage message)
-{
-}
+
 
 MonoObject::~MonoObject()
 {
