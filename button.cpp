@@ -14,10 +14,15 @@ void CustomButton::onCreate()
 {
 	canThrough = true;
 	type = UI;
-	// easy2d,无需设置节点坐标，addchild之后节点同步移动
+	// easy2d,无需设置节点坐标，addchild之后节点与父节点同步移动
 	button = ShapeNode::createRect(getSize());
 	button->setFillColor(Color::Gray);
 	this->addChild(button);
+	// 设置文本
+	text = gcnew Text;
+	text->setText("Text");
+	text->setFontSize(50);
+	this->addChild(text);
 }
 
 
@@ -29,12 +34,6 @@ void CustomButton::onFrameUpdate()
 	setbkmode(TRANSPARENT);
 	fillrectangle(getPosX(), getPosY(), 
 		getPosX() + getSize().width, getPosY() + getSize().height);
-	// 放置按钮名字
-	int textWide = textwidth(Text);
-	int textHeight = textheight(Text);
-	outtextxy(getPosX() + (getSize().width - textWide) / 2, 
-		getPosY() + (getSize().height - textHeight) / 2, Text);
-	setbkcolor(WHITE);
 }
 void CustomButton::onGetMessage(ExMessage message)
 {
@@ -48,4 +47,9 @@ void CustomButton::onGetMessage(ExMessage message)
 
 void CustomButton::onClick()
 {
+}
+
+CustomButton::~CustomButton()
+{
+	delete button;
 }

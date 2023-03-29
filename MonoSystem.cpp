@@ -53,6 +53,8 @@ void MonoSystem::Run()
 		map<MonoObject*, bool>::iterator iter = m_activeObjects.find(obj);
 		if (iter != m_activeObjects.end())
 		{
+			// 从父节点移除，避免继续走更新逻辑
+			obj->removeFromParent();
 			m_activeObjects.erase(obj);
 			delete obj;
 		}

@@ -6,11 +6,12 @@ class CustomButton :virtual public MonoObject
 {
 public:
 	void onCreate();
-	const wchar_t* Text=L"";
 	void onFrameUpdate();
 	void onGetMessage(ExMessage message);
 	// 按钮被点击时调用
 	virtual void onClick();
+	virtual ~CustomButton();
 protected:
 	ShapeNode* button;
+	Text* text;
 };

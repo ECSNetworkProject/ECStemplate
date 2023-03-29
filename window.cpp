@@ -14,25 +14,22 @@ void GameWindow::musicMenu()
 	initgraph(getSize().width, getSize().height, EX_SHOWCONSOLE);
 	Window::setSize(getSize().width, getSize().height);
 	// easy2d
-	/*auto img = gcnew Sprite();
+	auto img = gcnew Sprite();
 	bool check = img->open("Image/ø™ ºΩÁ√Ê±≥æ∞.jpg");
 	img->setSize(getSize().width, getSize().height);
-	this->addChild(img);*/
+	this->addChild(img);
 	// easyx;
 	loadimage(&img1, _T("./Image/ø™ ºΩÁ√Ê±≥æ∞.jpg"), getSize().width, getSize().height);
 	// ¥¥Ω®“Ù¿÷∫–1
 	“Ù¿÷∫–* musicBox = CreateObject<“Ù¿÷∫–>(Utils::Rect{ 110,310,100, 100 });
-	musicBox->Text = L"“Ù¿÷∫–";
 	musicBox->NowMusic = "mysoul.mp3";
 	musicboxes.push_back(musicBox);
 	// ¥¥Ω®“Ù¿÷∫–2
 	musicBox = CreateObject<“Ù¿÷∫–>(Utils::Rect{ 270,310,100, 100 });
-	musicBox->Text = L"“Ù¿÷∫–";
 	musicBox->NowMusic = "somewhere.mp3";
 	musicboxes.push_back(musicBox);
 	// ¥¥Ω®“Ù¿÷∫–3
 	musicBox = CreateObject<“Ù¿÷∫–>(Utils::Rect{ 430,310,100, 100 });
-	musicBox->Text = L"“Ù¿÷∫–";
 	musicBox->NowMusic = "»’Œƒ.mp3";
 	musicboxes.push_back(musicBox);
 }
