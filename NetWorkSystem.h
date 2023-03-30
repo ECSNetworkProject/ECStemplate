@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <queue>
+#include "NetworkObject.h"
 using namespace std;
 
 /// <summary>
@@ -27,6 +28,8 @@ public:
 	~NetworkSystem();
 private:
 	NetworkSystem() = default;
+	// 存储所有网络物体
+	vector<NetworkObject*> networkObjects;
 	//保存消息队列
 	queue<string> networkMessage;
 };

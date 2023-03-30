@@ -10,8 +10,9 @@ void MonoSystem::onUpdate()
 	// 固定时间戳运行一次,保证帧同步
 	if (clock() - lastFrame > frameCnt * 1000 / Sceneconfig::GetInstance()->MaxFrame)
 	{
-		Run();
 		NetworkSystem::GetInstance()->Run();
+		// 自己需要后运行，否则初始化物体其他系统无法捕捉
+		Run();
 		frameCnt++;
 		if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
 		{

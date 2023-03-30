@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#pragma once
 #include "NetworkSystem.h"
 #include <WS2tcpip.h>
 #include <WinSock2.h>
@@ -89,19 +90,21 @@ void NetworkSystem::AppendNetworkMessage(string message, bool board)
 
 void NetworkSystem::Run()
 {
+	// 判断新增物体是不是networkObject并添加到自身数组
+	vector<MonoObject*> objs = MonoSystem::GetInstance()->getNewObjects();
+	for (int i = 0; i < objs.size(); i++)
+	{
+		NetworkObject* obj = dynamic_cast<NetworkObject*>(objs[i]);
+		if (obj) networkObjects.push_back(obj);
+	}
 	// 取出一条网络消息
 	string message = PopNetworkMessage();
 	// 如果是空消息则返回
 	if (message == "") return;
-	vector<MonoObject*> objs = MonoSystem::GetInstance()->getAllObjects();
-	for (int i = 0; i < objs.size(); i++)
+	// 发送网络消息
+	for (int i = 0; i < networkObjects.size(); i++)
 	{
-		// 如果动态转化成功，代表物体实现了网络接口
-		NetworkObject* obj = dynamic_cast<NetworkObject*>(objs[i]);
-		if (obj)
-		{
-			obj->GetNetworkMessage(message);
-		}
+		networkObjects[i]->GetNetworkMessage(message);
 	}
 }
 

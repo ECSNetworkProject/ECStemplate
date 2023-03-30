@@ -135,6 +135,7 @@
     <ClCompile Include="NetworkObject.cpp" />
     <ClCompile Include="NetWorkSystem.cpp" />
     <ClCompile Include="SceneConfig.cpp" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="音乐盒.cpp" />
   </ItemGroup>
