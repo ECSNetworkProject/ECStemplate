@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "MonoSystem.h"
+#include "NetWorkSystem.h"
 #include "head.h"
 #include "SceneConfig.h"
 #include <time.h>
@@ -24,6 +25,8 @@ void InitMenu()
 
 int main(void)
 {
+    // Á¬½ÓÍøÂç
+    NetworkSystem::GetInstance()->Init();
     if (Game::init())
     {
         Renderer::showFps(true);

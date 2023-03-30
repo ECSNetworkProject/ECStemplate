@@ -1,4 +1,5 @@
 #include "MonoSystem.h"
+#include "NetWorkSystem.h"
 
 // 用于控制每秒多少帧
 clock_t lastFrame = clock();
@@ -10,6 +11,7 @@ void MonoSystem::onUpdate()
 	if (clock() - lastFrame > frameCnt * 1000 / Sceneconfig::GetInstance()->MaxFrame)
 	{
 		Run();
+		NetworkSystem::GetInstance()->Run();
 		frameCnt++;
 		if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
 		{
@@ -28,23 +30,11 @@ MonoSystem* MonoSystem::GetInstance()
 	return &m_Instance;
 }
 
-// 显示碰撞体边框
-void ShowCollide(Node* address,int color)
-{
-	/*
-	// 设置线条颜色
-	setlinecolor(color);
-	// 绘制矩形
-	rectangle((int)address->getPosX(), (int)address->getPosY(),
-		(int)address->getPosX() + (int)address->getSize().width,
-		(int)address->getPosY() + (int)address->getSize().height);
-	setlinecolor(WHITE);
-	*/
-}
-
 
 void MonoSystem::Run()
 {
+	// 新的一帧开始，清除前一帧新增物体
+	m_newObjects.clear();
 	//先清除要删除的物体
 	while (!m_deletingObjects.empty())
 	{
@@ -67,13 +57,6 @@ void MonoSystem::Run()
 		// 执行物体帧更新
 		it->first->onFrameUpdate();
 		if (it->first->vx != 0 || it->first->vy != 0) m_moveingObjects.push(it->first);
-		// 判断是否开始debug模式
-		if (debugModel)
-		{
-			// 不可穿越物体绘制成红色，可穿越物体绘制成绿色
-			//if (!it->first->canThrough) ShowCollide(it->first, RED);
-			// else ShowCollide(it->first, GREEN);
-		}
 	}
 	// 计算物体移动
 	calculateMove();
@@ -83,6 +66,7 @@ void MonoSystem::Run()
 void MonoSystem::AddObject(MonoObject* obj)
 {
 	m_activeObjects.insert(pair<MonoObject*, bool>(obj, true));
+	m_newObjects.push_back(obj);
 }
 
 void MonoSystem::DeleteObject(MonoObject* obj)
@@ -177,6 +161,11 @@ vector<MonoObject*> MonoSystem::getAllObjects()
 		rev.push_back(it->first);
 	}
 	return rev;
+}
+
+vector<MonoObject*> MonoSystem::getNewObjects()
+{
+	return m_newObjects;
 }
 
 

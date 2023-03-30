@@ -1,8 +1,8 @@
 #pragma once
 #include "button.h"
-
+#include"NetworkObject.h"
 // ¡‚–ŒºÃ≥–
-class “Ù¿÷∫– :public CustomButton
+class “Ù¿÷∫– :public CustomButton,public NetworkObject
 {
 public:
 	string NowMusic;
@@ -11,6 +11,7 @@ public:
 	void onFrameUpdate();
 	void ToggleMusic();
 	void onCrash(MonoObject* collider);
+	void GetNetworkMessage(string message);
 	bool IsOpen = false;
 private:
 	int leaveTime = 0;

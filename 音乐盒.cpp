@@ -1,5 +1,6 @@
 #include "“Ù¿÷∫–.h"
 #include "MonoSystem.h"
+#include"NetWorkSystem.h"
 #include "coin.h"
 
 void “Ù¿÷∫–::onCreate()
@@ -15,6 +16,7 @@ void “Ù¿÷∫–::onClick()
 	// GameMusic("º”∑÷.wav");
 	CreateObject<coin>({});
 	canThrough = true;
+	NetworkSystem::GetInstance()->AppendNetworkMessage("blue", true);
 	// «–ªªø™πÿ◊¥Ã¨
 	ToggleMusic();
 }
@@ -48,5 +50,9 @@ void “Ù¿÷∫–::ToggleMusic()
 void “Ù¿÷∫–::onCrash(MonoObject* collider)
 {
 	if (!canThrough) vx = -vx;
+}
+
+void “Ù¿÷∫–::GetNetworkMessage(string message)
+{
 }
 

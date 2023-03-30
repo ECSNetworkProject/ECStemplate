@@ -29,12 +29,12 @@ void CustomButton::onFrameUpdate()
 	// 判断点击
 	if (!MouseStatus && Input::isDown(MouseCode::Left))
 	{
+		MouseStatus = true;
 		// 获取自身边界
 		auto Rect = this->getBoundingBox();
 		// 判断点是否在边界内部
 		if (Rect.containsPoint(Input::getMousePos()))
 		{
-			MouseStatus = true;
 			onClick();
 		}
 	}

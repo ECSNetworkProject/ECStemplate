@@ -57,6 +57,12 @@
     <ClCompile Include="button.cpp">
       <Filter>源文件\Custom</Filter>
     </ClCompile>
+    <ClCompile Include="NetWorkSystem.cpp">
+      <Filter>源文件\System</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkObject.cpp">
+      <Filter>源文件\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h">
@@ -85,6 +91,12 @@
     </ClInclude>
     <ClInclude Include="coin.h">
       <Filter>头文件\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="NetWorkSystem.h">
+      <Filter>头文件\System</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkObject.h">
+      <Filter>头文件\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -132,6 +132,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MonoObject.cpp" />
     <ClCompile Include="MonoSystem.cpp" />
+    <ClCompile Include="NetworkObject.cpp" />
+    <ClCompile Include="NetWorkSystem.cpp" />
     <ClCompile Include="SceneConfig.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="音乐盒.cpp" />
@@ -142,6 +144,8 @@
     <ClInclude Include="head.h" />
     <ClInclude Include="MonoObject.h" />
     <ClInclude Include="MonoSystem.h" />
+    <ClInclude Include="NetworkObject.h" />
+    <ClInclude Include="NetWorkSystem.h" />
     <ClInclude Include="SceneConfig.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="window.h" />
