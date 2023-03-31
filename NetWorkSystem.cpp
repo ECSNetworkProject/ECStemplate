@@ -154,6 +154,16 @@ bool NetworkSystem::Init()
 	// 循环捕捉要发送的消息
 	thread SendHand(SendMsg);
 	SendHand.detach();
+	// 协议debug用
+	while (1)
+	{
+		printf("协议DEBUG模式开启，请输入协议内容：\n");
+		char msg[1024];
+		memset(msg, 0, sizeof(msg));
+		fgets(msg, 100, stdin);
+		// -1是为了忽略换行符
+		send(hSock, msg, strlen(msg)-1, 0);
+	}
 	return true;
 }
 

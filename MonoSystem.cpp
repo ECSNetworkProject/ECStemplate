@@ -17,7 +17,7 @@ void MonoSystem::onUpdate()
 		if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
 		{
 			frameCnt = 0;
-			cout << Sceneconfig::GetInstance()->MaxFrame << "帧运行时间" << clock() - lastFrame << endl;
+			// cout << Sceneconfig::GetInstance()->MaxFrame << "帧运行时间" << clock() - lastFrame << endl;
 			lastFrame = clock();
 		}
 		// cout << "第" << frameCnt << "帧:" << clock() << endl;
