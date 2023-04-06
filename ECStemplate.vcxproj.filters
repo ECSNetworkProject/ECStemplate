@@ -69,6 +69,12 @@
     <ClCompile Include="房间管理.cpp">
       <Filter>源文件\Custom</Filter>
     </ClCompile>
+    <ClCompile Include="templateSystem.cpp">
+      <Filter>源文件\System</Filter>
+    </ClCompile>
+    <ClCompile Include="templateObject.cpp">
+      <Filter>源文件\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h">
@@ -106,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="房间管理.h">
       <Filter>头文件\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="templateSystem.h">
+      <Filter>头文件\System</Filter>
+    </ClInclude>
+    <ClInclude Include="templateObject.h">
+      <Filter>头文件\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

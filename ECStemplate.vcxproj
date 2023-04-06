@@ -135,6 +135,8 @@
     <ClCompile Include="NetworkObject.cpp" />
     <ClCompile Include="NetWorkSystem.cpp" />
     <ClCompile Include="SceneConfig.cpp" />
+    <ClCompile Include="templateObject.cpp" />
+    <ClCompile Include="templateSystem.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="房间管理.cpp" />
@@ -149,6 +151,8 @@
     <ClInclude Include="NetworkObject.h" />
     <ClInclude Include="NetWorkSystem.h" />
     <ClInclude Include="SceneConfig.h" />
+    <ClInclude Include="templateObject.h" />
+    <ClInclude Include="templateSystem.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="房间管理.h" />
