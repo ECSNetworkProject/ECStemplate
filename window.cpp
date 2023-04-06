@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "MonoSystem.h"
 #include "音乐盒.h"
+#include "房间管理.h"
 
 void GameWindow::onCreate()
 {
@@ -29,6 +30,7 @@ void GameWindow::musicMenu()
 	musicBox = CreateObject<音乐盒>(Utils::Rect{ 430,310,100, 100 });
 	musicBox->NowMusic = "日文.mp3";
 	musicboxes.push_back(musicBox);
+	CreateObject<房间管理>(Utils::Rect{ 170,110,100, 100 });
 }
 
 void GameWindow::onFrameUpdate()

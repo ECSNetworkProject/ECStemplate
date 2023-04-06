@@ -16,7 +16,7 @@ void 音乐盒::onClick()
 	// GameMusic("加分.wav");
 	CreateObject<coin>({});
 	canThrough = true;
-	NetworkSystem::GetInstance()->AppendNetworkMessage("blue", true);
+	NetworkSystem::GetInstance()->AppendNetworkMessage("点击音乐盒", true);
 	// 切换开关状态
 	ToggleMusic();
 }

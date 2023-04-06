@@ -5,8 +5,8 @@
 #include "SceneConfig.h"
 #include <time.h>
 #include "window.h"
+#include "templateSystem.h"
 using namespace easy2d;
-
 
 void clearAllObject()
 {
@@ -25,6 +25,8 @@ void InitMenu()
 
 int main(void)
 {
+    // 打印csv表格数据
+    templateSystem ::GetInstance()->Init();
     // 连接网络
     NetworkSystem::GetInstance()->Init();
     if (Game::init())

@@ -17,9 +17,10 @@ void CustomButton::onCreate()
 	button->setFillColor(Color::Gray);
 	this->addChild(button);
 	// ÉèÖÃÎÄ±¾
-	text = gcnew Text;
-	text->setText("Text");
-	text->setFontSize(50);
+	text = gcnew Text("Button");
+	text->setFontSize(30);
+	text->setPos(getSize().height / 2 ,getSize().width / 2 );
+	text->setAnchor(0.5, 0.5);
 	this->addChild(text);
 }
 
