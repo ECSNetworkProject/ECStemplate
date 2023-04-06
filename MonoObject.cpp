@@ -1,4 +1,5 @@
-#include "MonoObject.h"
+ï»¿#include "MonoObject.h"
+
 
 Utils::Rect MonoObject::GetBody()
 {
@@ -28,5 +29,5 @@ void MonoObject::onFrameUpdate()
 
 MonoObject::~MonoObject()
 {
-	cout << "»ùÀà²¿·ÖÇå³ý" << endl;
+	cout << "åŸºç±»éƒ¨åˆ†æ¸…é™¤" << endl;
 }

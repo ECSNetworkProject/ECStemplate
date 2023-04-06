@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include "MonoSystem.h"
 #include "NetWorkSystem.h"
 #include "head.h"
@@ -25,26 +25,27 @@ void InitMenu()
 
 int main(void)
 {
-    // ´òÓ¡csv±í¸ñÊı¾İ
+
+    // æ‰“å°csvè¡¨æ ¼æ•°æ®
     templateSystem ::GetInstance()->Init();
-    // Á¬½ÓÍøÂç
+    // è¿æ¥ç½‘ç»œ
     NetworkSystem::GetInstance()->Init();
     if (Game::init())
     {
         Renderer::showFps(true);
-        // ĞŞ¸Ä´°¿Ú±êÌâ
-        Window::setTitle("Ã÷ÈÕ·½ÖÛ¶ÔÕ½°æ");
-        // ´´½¨Ò»¸ö¿Õ³¡¾°
+        // ä¿®æ”¹çª—å£æ ‡é¢˜
+        Window::setTitle("æ˜æ—¥æ–¹èˆŸå¯¹æˆ˜ç‰ˆ");
+        // åˆ›å»ºä¸€ä¸ªç©ºåœºæ™¯
         Scene* scene = new Scene;
-        // ½øÈë scene ³¡¾°
+        // è¿›å…¥ scene åœºæ™¯
         SceneManager::enter(scene);
-        // ÔÚ³¡¾°ÖĞ¼ÓÈë¹Ø¿¨¹ÜÀíÆ÷£¬¶ø²»Ê¹ÓÃEasy2DÔ­±¾µÄ¹ÜÀí
+        // åœ¨åœºæ™¯ä¸­åŠ å…¥å…³å¡ç®¡ç†å™¨ï¼Œè€Œä¸ä½¿ç”¨Easy2DåŸæœ¬çš„ç®¡ç†
         scene->addChild(MonoSystem::GetInstance());
-        // ³õÊ¼»¯²Ëµ¥
+        // åˆå§‹åŒ–èœå•
         InitMenu();
-        // ³õÊ¼»¯´°¿Ú
+        // åˆå§‹åŒ–çª—å£
         Game::start();
-        // ÊÍ·ÅÄÚ´æ
+        // é‡Šæ”¾å†…å­˜
         delete scene;
     }
     Game::destroy();

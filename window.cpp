@@ -1,8 +1,9 @@
-#include "Window.h"
+ï»¿#include "Window.h"
 #include "Button.h"
 #include "MonoSystem.h"
-#include "ÒôÀÖºĞ.h"
-#include "·¿¼ä¹ÜÀí.h"
+#include "éŸ³ä¹ç›’.h"
+#include "æˆ¿é—´ç®¡ç†.h"
+
 
 void GameWindow::onCreate()
 {
@@ -15,31 +16,31 @@ void GameWindow::musicMenu()
 	Window::setSize(getSize().width, getSize().height);
 	// easy2d
 	auto img = gcnew Sprite();
-	bool check = img->open("Image/¿ªÊ¼½çÃæ±³¾°.jpg");
+	bool check = img->open("Image/å¼€å§‹ç•Œé¢èƒŒæ™¯.jpg");
 	img->setSize(getSize().width, getSize().height);
 	this->addChild(img);
-	// ´´½¨ÒôÀÖºĞ1
-	ÒôÀÖºĞ* musicBox = CreateObject<ÒôÀÖºĞ>(Utils::Rect{ 110,310,100, 100 });
+	// åˆ›å»ºéŸ³ä¹ç›’1
+	éŸ³ä¹ç›’* musicBox = CreateObject<éŸ³ä¹ç›’>(Utils::Rect{ 110,310,100, 100 });
 	musicBox->NowMusic = "mysoul.mp3";
 	musicboxes.push_back(musicBox);
-	// ´´½¨ÒôÀÖºĞ2
-	musicBox = CreateObject<ÒôÀÖºĞ>(Utils::Rect{ 270,310,100, 100 });
+	// åˆ›å»ºéŸ³ä¹ç›’2
+	musicBox = CreateObject<éŸ³ä¹ç›’>(Utils::Rect{ 270,310,100, 100 });
 	musicBox->NowMusic = "somewhere.mp3";
 	musicboxes.push_back(musicBox);
-	// ´´½¨ÒôÀÖºĞ3
-	musicBox = CreateObject<ÒôÀÖºĞ>(Utils::Rect{ 430,310,100, 100 });
-	musicBox->NowMusic = "ÈÕÎÄ.mp3";
+	// åˆ›å»ºéŸ³ä¹ç›’3
+	musicBox = CreateObject<éŸ³ä¹ç›’>(Utils::Rect{ 430,310,100, 100 });
+	musicBox->NowMusic = "æ—¥æ–‡.mp3";
 	musicboxes.push_back(musicBox);
-	CreateObject<·¿¼ä¹ÜÀí>(Utils::Rect{ 170,110,100, 100 });
+	CreateObject<æˆ¿é—´ç®¡ç†>(Utils::Rect{ 170,110,100, 100 });
 }
 
 void GameWindow::onFrameUpdate()
 {
 	for (int i = 0; i < musicboxes.size();i++) {
-		// Èç¹û³öÏÖÒôÀÖºĞÊÇ¿ªÆô×´Ì¬²¢ÇÒ²»ÊÇµ±Ç°¼ÇÂ¼µÄÒôÀÖºĞ
+		// å¦‚æœå‡ºç°éŸ³ä¹ç›’æ˜¯å¼€å¯çŠ¶æ€å¹¶ä¸”ä¸æ˜¯å½“å‰è®°å½•çš„éŸ³ä¹ç›’
 		if (musicboxes[i]->IsOpen == true && musicboxes[i] != openingMusicbox)
 		{
-			// Èç¹ûµ±Ç°¼ÇÂ¼µÄÒôÀÖºĞÔÚ²¥·Å£¬Ôò¹Ø±Õ
+			// å¦‚æœå½“å‰è®°å½•çš„éŸ³ä¹ç›’åœ¨æ’­æ”¾ï¼Œåˆ™å…³é—­
 			if (openingMusicbox!=nullptr && openingMusicbox->IsOpen) openingMusicbox->ToggleMusic();
 			openingMusicbox = musicboxes[i];
 		}

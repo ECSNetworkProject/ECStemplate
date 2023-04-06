@@ -1,18 +1,19 @@
-#include "·¿¼ä¹ÜÀí.h"
+ï»¿#include "æˆ¿é—´ç®¡ç†.h"
 #include "NetWorkSystem.h"
 
-void ·¿¼ä¹ÜÀí::onCreate()
+
+void æˆ¿é—´ç®¡ç†::onCreate()
 {
 	CustomButton::onCreate();
-	text->setText("´´½¨·¿¼ä");
+	text->setText("åˆ›å»ºæˆ¿é—´");
 }
 
-void ·¿¼ä¹ÜÀí::onClick()
+void æˆ¿é—´ç®¡ç†::onClick()
 {
-	cout << "´´½¨·¿¼ä" << endl;
+	cout << "åˆ›å»ºæˆ¿é—´" << endl;
 	NetworkSystem::GetInstance()->AppendNetworkMessage("CreateRoom 1", true);
 }
 
-void ·¿¼ä¹ÜÀí::GetNetworkMessage(string message)
+void æˆ¿é—´ç®¡ç†::GetNetworkMessage(string message)
 {
 }

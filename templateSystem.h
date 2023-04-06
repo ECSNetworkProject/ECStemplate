@@ -1,7 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 #include "templateObject.h"
 using namespace std;
+
 class templateSystem
 {
 public:
@@ -11,7 +12,7 @@ public:
 	~templateSystem();
 private:
 	templateSystem() = default;
-	// ´æ´¢ËùÓĞÎïÌå
+	// å­˜å‚¨æ‰€æœ‰ç‰©ä½“
 	vector<templateObject*> templateObjects;
 };
 

@@ -1,8 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "button.h"
 #include"NetworkObject.h"
 
-class ·¿¼ä¹ÜÀí:public CustomButton, public NetworkObject
+
+class æˆ¿é—´ç®¡ç†:public CustomButton, public NetworkObject
 {
 	void onCreate();
 	void onClick();

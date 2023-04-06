@@ -1,9 +1,10 @@
-#include "ÒôÀÖºĞ.h"
+ï»¿#include "éŸ³ä¹ç›’.h"
 #include "MonoSystem.h"
 #include"NetWorkSystem.h"
 #include "coin.h"
 
-void ÒôÀÖºĞ::onCreate()
+
+void éŸ³ä¹ç›’::onCreate()
 {
 	CustomButton::onCreate();
 	type = UI;
@@ -11,20 +12,20 @@ void ÒôÀÖºĞ::onCreate()
 	canThrough = false;
 }
 
-void ÒôÀÖºĞ::onClick()
+void éŸ³ä¹ç›’::onClick()
 {
-	// GameMusic("¼Ó·Ö.wav");
+	// GameMusic("åŠ åˆ†.wav");
 	CreateObject<coin>({});
 	canThrough = true;
-	NetworkSystem::GetInstance()->AppendNetworkMessage("µã»÷ÒôÀÖºĞ", true);
-	// ÇĞ»»¿ª¹Ø×´Ì¬
+	NetworkSystem::GetInstance()->AppendNetworkMessage("ç‚¹å‡»éŸ³ä¹ç›’", true);
+	// åˆ‡æ¢å¼€å…³çŠ¶æ€
 	ToggleMusic();
 }
 
-void ÒôÀÖºĞ::onFrameUpdate()
+void éŸ³ä¹ç›’::onFrameUpdate()
 {
 	CustomButton::onFrameUpdate();
-	// ×óÓÒÒÆ¶¯
+	// å·¦å³ç§»åŠ¨
 	if (getPosX() > 640 || getPosX() < 0)
 	{
 		vx = -vx;
@@ -32,7 +33,7 @@ void ÒôÀÖºĞ::onFrameUpdate()
 
 }
 
-void ÒôÀÖºĞ::ToggleMusic()
+void éŸ³ä¹ç›’::ToggleMusic()
 {
 	IsOpen = !IsOpen;
 	if (IsOpen)
@@ -47,12 +48,12 @@ void ÒôÀÖºĞ::ToggleMusic()
 	}
 }
 
-void ÒôÀÖºĞ::onCrash(MonoObject* collider)
+void éŸ³ä¹ç›’::onCrash(MonoObject* collider)
 {
 	if (!canThrough) vx = -vx;
 }
 
-void ÒôÀÖºĞ::GetNetworkMessage(string message)
+void éŸ³ä¹ç›’::GetNetworkMessage(string message)
 {
 }
 

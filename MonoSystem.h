@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <map>
 #include <queue>
@@ -8,52 +8,51 @@
 using namespace std;
 using namespace easy2d;
 
-
 class MonoSystem : public Node
 {
 public:
-	// ¶Ô½Óeasy2d
+	// å¯¹æ¥easy2d
 	void onUpdate();
-	// ¿ªÆôºóÊ¹ÓÃºìÉ«±êÊ¶ÕæÊµµÄÅö×²Ìå,ÂÌÉ«±êÊ¶ÉèÖÃÎª¿É´©Ô½µÄÅö×²Ìå
+	// å¼€å¯åä½¿ç”¨çº¢è‰²æ ‡è¯†çœŸå®çš„ç¢°æ’ä½“,ç»¿è‰²æ ‡è¯†è®¾ç½®ä¸ºå¯ç©¿è¶Šçš„ç¢°æ’ä½“
 	bool debugModel = true;
 	static MonoSystem* GetInstance();
 	/// <summary>
-	/// ´´½¨ÎïÌå
+	/// åˆ›å»ºç‰©ä½“
 	/// </summary>
 	template <typename T>
 	friend T* CreateObject(Utils::Rect body);
 	/// <summary>
-	/// É¾³ıÎïÌå
+	/// åˆ é™¤ç‰©ä½“
 	/// </summary>
 	friend void DestroyObject(MonoObject* destroyObject);
 	/// <summary>
-	/// Ö¡Ö÷Ìå
+	/// å¸§ä¸»ä½“
 	/// </summary>
 	void Run();
 	/// <summary>
-	/// »ñÈ¡Ö¸¶¨·¶Î§ÄÚ¿ÉÅö×²µ¥Î»
+	/// è·å–æŒ‡å®šèŒƒå›´å†…å¯ç¢°æ’å•ä½
 	/// </summary>
 	vector<MonoObject*> caculateCrash(Utils::Rect address);
 	/// <summary>
-	/// »ñÈ¡³¡¾°ÖĞËùÓĞ»îÔ¾ÎïÌå
+	/// è·å–åœºæ™¯ä¸­æ‰€æœ‰æ´»è·ƒç‰©ä½“
 	/// </summary>
 	vector<MonoObject*> getAllObjects();
 	/// <summary>
-	/// »ñÈ¡µ±Ç°Ö¡ĞÂÔöÎïÌå
+	/// è·å–å½“å‰å¸§æ–°å¢ç‰©ä½“
 	/// </summary>
 	vector<MonoObject*> getNewObjects();
 private:
 	MonoSystem() = default;
 	int hashID=0;
-	// µ±Ç°Ö¡ĞÂÔöÎïÌå
+	// å½“å‰å¸§æ–°å¢ç‰©ä½“
 	vector<MonoObject*> m_newObjects;
-	// µÈ´ıÉ¾³ıµÄÎïÌå
+	// ç­‰å¾…åˆ é™¤çš„ç‰©ä½“
 	queue<MonoObject*> m_deletingObjects;
-	// µ±Ç°¹Ø¿¨»îÔ¾µÄÎïÌå
+	// å½“å‰å…³å¡æ´»è·ƒçš„ç‰©ä½“
 	map<MonoObject*, bool> m_activeObjects;
-	// µ±Ç°Ö¡Òª½øĞĞÒÆ¶¯µÄÎïÌå
+	// å½“å‰å¸§è¦è¿›è¡Œç§»åŠ¨çš„ç‰©ä½“
 	queue<MonoObject*> m_moveingObjects;
-	// ·¢ÉúÅö×²µÄÎïÌå,Ôª×éµÚÒ»¸öÖµÎªÖ÷Ìå
+	// å‘ç”Ÿç¢°æ’çš„ç‰©ä½“,å…ƒç»„ç¬¬ä¸€ä¸ªå€¼ä¸ºä¸»ä½“
 	map < pair<MonoObject*, MonoObject*>,bool> m_crashObjects;
 	void AddObject(MonoObject* obj);
 	void DeleteObject(MonoObject* obj);
@@ -64,27 +63,27 @@ private:
 template <typename T> 
 inline static T* CreateObject(Utils::Rect body) 
 {	
-	//¿ªÊ¼´´½¨
+	//å¼€å§‹åˆ›å»º
 	MonoObject* newObject = new T();
 	MonoSystem::GetInstance()->AddObject(newObject);
-	// ¼ÓÈëµ½¹ÜÀíÆ÷µ±ÖĞ,ÓÃÓÚeasy2dµÄÏÔÊ¾
+	// åŠ å…¥åˆ°ç®¡ç†å™¨å½“ä¸­,ç”¨äºeasy2dçš„æ˜¾ç¤º
 	MonoSystem::GetInstance()->addChild(newObject);
-	// ÉèÖÃÏà¹Ø²ÎÊı
+	// è®¾ç½®ç›¸å…³å‚æ•°
 	newObject->setPos(body.posx,body.posy);
 	newObject->setSize(body.width, body.height);
 	newObject->hashId = ++MonoSystem::GetInstance()->hashID;
 	newObject->onCreate();
-	// ÅĞ¶ÏÊÇ·ñ¿ªÊ¼debugÄ£Ê½
+	// åˆ¤æ–­æ˜¯å¦å¼€å§‹debugæ¨¡å¼
 	if (MonoSystem::GetInstance()->debugModel)
 	{
-		//²»¿É´©Ô½ÎïÌå»æÖÆ³ÉºìÉ«£¬¿É´©Ô½ÎïÌå»æÖÆ³ÉÂÌÉ«
+		//ä¸å¯ç©¿è¶Šç‰©ä½“ç»˜åˆ¶æˆçº¢è‰²ï¼Œå¯ç©¿è¶Šç‰©ä½“ç»˜åˆ¶æˆç»¿è‰²
 		auto Rect = ShapeNode::createRect(newObject->getSize());
 		Rect->setDrawingMode(DrawingStyle::Mode::Round);
 		if (!newObject->canThrough) Rect->setStrokeColor(Color::Red);
 		else Rect->setStrokeColor(Color::Green);
 		newObject->addChild(Rect);
 	}
-	// ¶¯Ì¬×ª»¯
+	// åŠ¨æ€è½¬åŒ–
 	return dynamic_cast<T*>(newObject);
 }
 

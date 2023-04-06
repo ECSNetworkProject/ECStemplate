@@ -1,18 +1,19 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include "MonoObject.h"
 using namespace std;
+
 class CustomButton :virtual public MonoObject
 {
 public:
 	void onCreate();
 	void onFrameUpdate();
-	// °´Å¥±»µã»÷Ê±µ÷ÓÃ
+	// æŒ‰é’®è¢«ç‚¹å‡»æ—¶è°ƒç”¨
 	virtual void onClick();
 	virtual ~CustomButton();
 protected:
 	ShapeNode* button;
 	Text* text;
-	// ¼ÇÂ¼Êó±ê×´Ì¬
+	// è®°å½•é¼ æ ‡çŠ¶æ€
 	bool MouseStatus=false;
 };

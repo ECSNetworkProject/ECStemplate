@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include "NetworkSystem.h"
 #include <WS2tcpip.h>
@@ -12,12 +12,13 @@
 #include "NetworkObject.h"
 #pragma comment(lib, "ws2_32.lib")
 
-// È«¾Ö±äÁ¿´´½¨socket
+
+// å…¨å±€å˜é‡åˆ›å»ºsocket
 SOCKET hSock;
-// È«¾Ö±äÁ¿´æ´¢´ı·¢ËÍµ½·şÎñÆ÷µÄÏûÏ¢
+// å…¨å±€å˜é‡å­˜å‚¨å¾…å‘é€åˆ°æœåŠ¡å™¨çš„æ¶ˆæ¯
 queue<string> BoardingMessage;
 
-// ¶àÏß³Ì½ÓÊÕÏûÏ¢
+// å¤šçº¿ç¨‹æ¥æ”¶æ¶ˆæ¯
 inline unsigned RecvMsg(void* arg)
 {
 	SOCKET sock = *((SOCKET*)arg);
@@ -37,10 +38,10 @@ inline unsigned RecvMsg(void* arg)
 	return 0;
 }
 
-// ¶àÏß³Ì·¢ËÍÏûÏ¢
+// å¤šçº¿ç¨‹å‘é€æ¶ˆæ¯
 inline unsigned SendMsg()
 {
-	// ¶àÏß³ÌÄÚÖ»ÄÜ²Ù×÷¾Ö²¿±äÁ¿
+	// å¤šçº¿ç¨‹å†…åªèƒ½æ“ä½œå±€éƒ¨å˜é‡
 	char msg[1024];
 	while (1)
 	{
@@ -49,7 +50,7 @@ inline unsigned SendMsg()
 			string temp = BoardingMessage.front();
 			strcpy_s(msg, temp.c_str());
 			BoardingMessage.pop();
-			// Í£¶Ù1ms,±ÜÃâ·¢ËÍ³öµÄ×Ö·û´®Õ³ÔÚÒ»Æğ
+			// åœé¡¿1ms,é¿å…å‘é€å‡ºçš„å­—ç¬¦ä¸²ç²˜åœ¨ä¸€èµ·
 			std::this_thread::sleep_for(1ms);
 			send(hSock, msg, strlen(msg), 0);
 		}
@@ -59,7 +60,7 @@ inline unsigned SendMsg()
 
 NetworkSystem* NetworkSystem::GetInstance()
 {
-	// ¶öººÊ½
+	// é¥¿æ±‰å¼
 	static NetworkSystem m_Instance;
 	return &m_Instance;
 }
@@ -75,7 +76,7 @@ string NetworkSystem::PopNetworkMessage()
 
 void NetworkSystem::AppendNetworkMessage(string message, bool board)
 {
-	// »ñÈ¡Ê±¼ä²¢Ìí¼Óµ½×Ö·û´®ÖĞ
+	// è·å–æ—¶é—´å¹¶æ·»åŠ åˆ°å­—ç¬¦ä¸²ä¸­
 	SYSTEMTIME st = { 0 };
 	GetLocalTime(&st);
 	message += "-" + to_string(st.wSecond * 1000 + st.wMilliseconds);
@@ -90,18 +91,18 @@ void NetworkSystem::AppendNetworkMessage(string message, bool board)
 
 void NetworkSystem::Run()
 {
-	// ÅĞ¶ÏĞÂÔöÎïÌåÊÇ²»ÊÇnetworkObject²¢Ìí¼Óµ½×ÔÉíÊı×é
+	// åˆ¤æ–­æ–°å¢ç‰©ä½“æ˜¯ä¸æ˜¯networkObjectå¹¶æ·»åŠ åˆ°è‡ªèº«æ•°ç»„
 	vector<MonoObject*> objs = MonoSystem::GetInstance()->getNewObjects();
 	for (int i = 0; i < objs.size(); i++)
 	{
 		NetworkObject* obj = dynamic_cast<NetworkObject*>(objs[i]);
 		if (obj) networkObjects.push_back(obj);
 	}
-	// È¡³öÒ»ÌõÍøÂçÏûÏ¢
+	// å–å‡ºä¸€æ¡ç½‘ç»œæ¶ˆæ¯
 	string message = PopNetworkMessage();
-	// Èç¹ûÊÇ¿ÕÏûÏ¢Ôò·µ»Ø
+	// å¦‚æœæ˜¯ç©ºæ¶ˆæ¯åˆ™è¿”å›
 	if (message == "") return;
-	// ·¢ËÍÍøÂçÏûÏ¢
+	// å‘é€ç½‘ç»œæ¶ˆæ¯
 	for (int i = 0; i < networkObjects.size(); i++)
 	{
 		networkObjects[i]->GetNetworkMessage(message);
@@ -110,7 +111,7 @@ void NetworkSystem::Run()
 
 bool NetworkSystem::Init()
 {
-	//³õÊ¼»¯socket»·¾³
+	//åˆå§‹åŒ–socketç¯å¢ƒ
 	WORD wVersionRequested;
 	WSADATA wsaData;
 	int err;
@@ -123,19 +124,19 @@ bool NetworkSystem::Init()
 	if (LOBYTE(wsaData.wVersion) != 2 ||
 		HIBYTE(wsaData.wVersion) != 2)
 	{
-		// Çå³ısocket»·¾³
+		// æ¸…é™¤socketç¯å¢ƒ
 		WSACleanup();
 		return -1;
 	}
 	hSock = socket(AF_INET, SOCK_STREAM, 0);
-	//°ó¶¨¶Ë¿Ú
+	//ç»‘å®šç«¯å£
 	SOCKADDR_IN servAdr;
 	memset(&servAdr, 0, sizeof(servAdr));
 	servAdr.sin_family = AF_INET;
-	servAdr.sin_port = htons(9999); // ¶Ë¿ÚºÅ
-	inet_pton(AF_INET, "43.136.100.219", &servAdr.sin_addr); // ¹«ÍøIPµØÖ·
+	servAdr.sin_port = htons(9999); // ç«¯å£å·
+	inet_pton(AF_INET, "43.136.100.219", &servAdr.sin_addr); // å…¬ç½‘IPåœ°å€
 
-	//Á¬½Ó·şÎñÆ÷
+	//è¿æ¥æœåŠ¡å™¨
 	if (connect(hSock, (SOCKADDR*)&servAdr, sizeof(servAdr)) == SOCKET_ERROR)
 	{
 		printf("connect error : %d", GetLastError());
@@ -143,25 +144,25 @@ bool NetworkSystem::Init()
 	}
 	else
 	{
-		printf("³É¹¦Á¬½Óµ½ÍøÂç,ÇëÊäÈë±¾»úĞÕÃû:");
+		printf("æˆåŠŸè¿æ¥åˆ°ç½‘ç»œ,è¯·è¾“å…¥æœ¬æœºå§“å:");
 		char msg[1024];
 		scanf("%s", msg);
 		send(hSock, msg, strlen(msg), 0);
 	}
 
-	//Ñ­»·ÊÕÏûÏ¢
+	//å¾ªç¯æ”¶æ¶ˆæ¯
 	HANDLE hRecvHand = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)RecvMsg, (void*)&hSock, 0, NULL);
-	// Ñ­»·²¶×½Òª·¢ËÍµÄÏûÏ¢
+	// å¾ªç¯æ•æ‰è¦å‘é€çš„æ¶ˆæ¯
 	thread SendHand(SendMsg);
 	SendHand.detach();
-	// Ğ­ÒédebugÓÃ
+	// åè®®debugç”¨
 	while (1)
 	{
-		printf("Ğ­ÒéDEBUGÄ£Ê½¿ªÆô£¬ÇëÊäÈëĞ­ÒéÄÚÈİ£º\n");
+		printf("åè®®DEBUGæ¨¡å¼å¼€å¯ï¼Œè¯·è¾“å…¥åè®®å†…å®¹ï¼š\n");
 		char msg[1024];
 		memset(msg, 0, sizeof(msg));
 		fgets(msg, 100, stdin);
-		// -1ÊÇÎªÁËºöÂÔ»»ĞĞ·û
+		// -1æ˜¯ä¸ºäº†å¿½ç•¥æ¢è¡Œç¬¦
 		send(hSock, msg, strlen(msg)-1, 0);
 	}
 	return true;

@@ -1,17 +1,18 @@
-#include "templateSystem.h"
+ï»¿#include "templateSystem.h"
 #include <fstream>
 #include "MonoSystem.h"
 
+
 templateSystem* templateSystem::GetInstance()
 {
-	// ¶öººÊ½
+	// é¥¿æ±‰å¼
 	static templateSystem m_Instance;
 	return &m_Instance;
 }
 
 void templateSystem::Run()
 {
-	// ÅĞ¶ÏĞÂÔöÎïÌåÊÇ²»ÊÇtemplateObject²¢Ìí¼Óµ½×ÔÉíÊı×é
+	// åˆ¤æ–­æ–°å¢ç‰©ä½“æ˜¯ä¸æ˜¯templateObjectå¹¶æ·»åŠ åˆ°è‡ªèº«æ•°ç»„
 	vector<MonoObject*> objs = MonoSystem::GetInstance()->getNewObjects();
 	for (int i = 0; i < objs.size(); i++)
 	{
@@ -22,28 +23,28 @@ void templateSystem::Run()
 
 bool templateSystem::Init()
 {
-    std::vector<std::vector<std::string>> data;  // ÓÃÓÚ´æ´¢CSVÊı¾İ
-    std::ifstream file("./²âÊÔ±í¸ñ.csv");  // ´ò¿ªCSVÎÄ¼ş
+    std::vector<std::vector<std::string>> data;  // ç”¨äºå­˜å‚¨CSVæ•°æ®
+    std::ifstream file("./æµ‹è¯•è¡¨æ ¼.csv");  // æ‰“å¼€CSVæ–‡ä»¶
     if (!file.is_open()) {
         std::cerr << "Error opening file" << std::endl;
         return 1;
     }
 
     std::string line;
-    while (std::getline(file, line)) {  // ÖğĞĞ¶ÁÈ¡CSVÎÄ¼ş
+    while (std::getline(file, line)) {  // é€è¡Œè¯»å–CSVæ–‡ä»¶
         std::vector<std::string> row;
         size_t pos = 0;
-        while ((pos = line.find(',')) != std::string::npos) {  // ·Ö¸îÃ¿Ò»ĞĞ
+        while ((pos = line.find(',')) != std::string::npos) {  // åˆ†å‰²æ¯ä¸€è¡Œ
             row.push_back(line.substr(0, pos));
             line.erase(0, pos + 1);
         }
-        row.push_back(line);  // ×îºóÒ»¸öÔªËØÃ»ÓĞ¶ººÅ
+        row.push_back(line);  // æœ€åä¸€ä¸ªå…ƒç´ æ²¡æœ‰é€—å·
         data.push_back(row);
     }
 
-    file.close();  // ¹Ø±ÕCSVÎÄ¼ş
+    file.close();  // å…³é—­CSVæ–‡ä»¶
 
-    // ±éÀú¶ÁÈ¡µÄÊı¾İ²¢´òÓ¡³öÀ´
+    // éå†è¯»å–çš„æ•°æ®å¹¶æ‰“å°å‡ºæ¥
     for (const auto& row : data) {
         for (const auto& cell : row) {
             std::cout << cell << " ";

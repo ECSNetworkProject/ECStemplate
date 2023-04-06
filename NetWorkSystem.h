@@ -1,11 +1,12 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <queue>
 #include "NetworkObject.h"
 using namespace std;
 
+
 /// <summary>
-/// ÓÃÓÚ»ñÈ¡ÍøÂçĞÅÏ¢
+/// ç”¨äºè·å–ç½‘ç»œä¿¡æ¯
 /// </summary>
 
 class NetworkSystem
@@ -13,23 +14,23 @@ class NetworkSystem
 public:
 	static NetworkSystem* GetInstance();
 	/// <summary>
-	/// È¡³öÒ»ÌõÊÕµ½µÄÍøÂçÏûÏ¢
+	/// å–å‡ºä¸€æ¡æ”¶åˆ°çš„ç½‘ç»œæ¶ˆæ¯
 	/// </summary>
 	string PopNetworkMessage();
 	/// <summary>
-	/// Ìí¼ÓÒ»ÌõÍøÂçÏûÏ¢,ÊÇ·ñ¹ã²¥µ½ËùÓĞÆäËû¿Í»§¶Ë
+	/// æ·»åŠ ä¸€æ¡ç½‘ç»œæ¶ˆæ¯,æ˜¯å¦å¹¿æ’­åˆ°æ‰€æœ‰å…¶ä»–å®¢æˆ·ç«¯
 	/// </summary>
 	void AppendNetworkMessage(string message, bool board);
 	/// <summary>
-	/// ÍøÂçÏµÍ³Ö¡¸üĞÂ
+	/// ç½‘ç»œç³»ç»Ÿå¸§æ›´æ–°
 	/// </summary>
 	void Run();
 	bool Init();
 	~NetworkSystem();
 private:
 	NetworkSystem() = default;
-	// ´æ´¢ËùÓĞÍøÂçÎïÌå
+	// å­˜å‚¨æ‰€æœ‰ç½‘ç»œç‰©ä½“
 	vector<NetworkObject*> networkObjects;
-	//±£´æÏûÏ¢¶ÓÁĞ
+	//ä¿å­˜æ¶ˆæ¯é˜Ÿåˆ—
 	queue<string> networkMessage;
 };

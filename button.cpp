@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include<graphics.h>
 #include<stdio.h>
 #include<vector>
@@ -8,15 +8,16 @@
 #include "head.h"
 #include "SceneConfig.h"
 using namespace Utils;
+
 void CustomButton::onCreate()
 {
 	canThrough = true;
 	type = UI;
-	// easy2d,ÎŞĞèÉèÖÃ½Úµã×ø±ê£¬addchildÖ®ºó½ÚµãÓë¸¸½ÚµãÍ¬²½ÒÆ¶¯
+	// easy2d,æ— éœ€è®¾ç½®èŠ‚ç‚¹åæ ‡ï¼Œaddchildä¹‹åèŠ‚ç‚¹ä¸çˆ¶èŠ‚ç‚¹åŒæ­¥ç§»åŠ¨
 	button = ShapeNode::createRect(getSize());
 	button->setFillColor(Color::Gray);
 	this->addChild(button);
-	// ÉèÖÃÎÄ±¾
+	// è®¾ç½®æ–‡æœ¬
 	text = gcnew Text("Button");
 	text->setFontSize(30);
 	text->setPos(getSize().height / 2 ,getSize().width / 2 );
@@ -27,19 +28,19 @@ void CustomButton::onCreate()
 
 void CustomButton::onFrameUpdate()
 {
-	// ÅĞ¶Ïµã»÷
+	// åˆ¤æ–­ç‚¹å‡»
 	if (!MouseStatus && Input::isDown(MouseCode::Left))
 	{
 		MouseStatus = true;
-		// »ñÈ¡×ÔÉí±ß½ç
+		// è·å–è‡ªèº«è¾¹ç•Œ
 		auto Rect = this->getBoundingBox();
-		// ÅĞ¶ÏµãÊÇ·ñÔÚ±ß½çÄÚ²¿
+		// åˆ¤æ–­ç‚¹æ˜¯å¦åœ¨è¾¹ç•Œå†…éƒ¨
 		if (Rect.containsPoint(Input::getMousePos()))
 		{
 			onClick();
 		}
 	}
-	// ĞèÒª¼ÇÂ¼Êó±ê×´Ì¬£¬·ñÔò»á³öÏÖ³ÖĞø°´Ñ¹
+	// éœ€è¦è®°å½•é¼ æ ‡çŠ¶æ€ï¼Œå¦åˆ™ä¼šå‡ºç°æŒç»­æŒ‰å‹
 	if (Input::isRelease(MouseCode::Left)) MouseStatus = false;
 }
 

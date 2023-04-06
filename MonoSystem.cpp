@@ -1,32 +1,33 @@
-#include "MonoSystem.h"
+ï»¿#include "MonoSystem.h"
 #include "NetWorkSystem.h"
 
-// ÓÃÓÚ¿ØÖÆÃ¿Ãë¶àÉÙÖ¡
+
+// ç”¨äºæ§åˆ¶æ¯ç§’å¤šå°‘å¸§
 clock_t lastFrame = clock();
 int frameCnt = 0;
 
 void MonoSystem::onUpdate()
 {
-	// ¹Ì¶¨Ê±¼ä´ÁÔËĞĞÒ»´Î,±£Ö¤Ö¡Í¬²½
+	// å›ºå®šæ—¶é—´æˆ³è¿è¡Œä¸€æ¬¡,ä¿è¯å¸§åŒæ­¥
 	if (clock() - lastFrame > frameCnt * 1000 / Sceneconfig::GetInstance()->MaxFrame)
 	{
 		NetworkSystem::GetInstance()->Run();
-		// ×Ô¼ºĞèÒªºóÔËĞĞ£¬·ñÔò³õÊ¼»¯ÎïÌåÆäËûÏµÍ³ÎŞ·¨²¶×½
+		// è‡ªå·±éœ€è¦åè¿è¡Œï¼Œå¦åˆ™åˆå§‹åŒ–ç‰©ä½“å…¶ä»–ç³»ç»Ÿæ— æ³•æ•æ‰
 		Run();
 		frameCnt++;
 		if (frameCnt == Sceneconfig::GetInstance()->MaxFrame)
 		{
 			frameCnt = 0;
-			// cout << Sceneconfig::GetInstance()->MaxFrame << "Ö¡ÔËĞĞÊ±¼ä" << clock() - lastFrame << endl;
+			// cout << Sceneconfig::GetInstance()->MaxFrame << "å¸§è¿è¡Œæ—¶é—´" << clock() - lastFrame << endl;
 			lastFrame = clock();
 		}
-		// cout << "µÚ" << frameCnt << "Ö¡:" << clock() << endl;
+		// cout << "ç¬¬" << frameCnt << "å¸§:" << clock() << endl;
 	}
 }
 
 MonoSystem* MonoSystem::GetInstance()
 {
-	// ¶öººÊ½
+	// é¥¿æ±‰å¼
 	static MonoSystem m_Instance;
 	return &m_Instance;
 }
@@ -34,32 +35,32 @@ MonoSystem* MonoSystem::GetInstance()
 
 void MonoSystem::Run()
 {
-	// ĞÂµÄÒ»Ö¡¿ªÊ¼£¬Çå³ıÇ°Ò»Ö¡ĞÂÔöÎïÌå
+	// æ–°çš„ä¸€å¸§å¼€å§‹ï¼Œæ¸…é™¤å‰ä¸€å¸§æ–°å¢ç‰©ä½“
 	m_newObjects.clear();
-	//ÏÈÇå³ıÒªÉ¾³ıµÄÎïÌå
+	//å…ˆæ¸…é™¤è¦åˆ é™¤çš„ç‰©ä½“
 	while (!m_deletingObjects.empty())
 	{
-		// »ñÈ¡µ±Ç°Ö¡É¾³ıµÄÎïÌå
+		// è·å–å½“å‰å¸§åˆ é™¤çš„ç‰©ä½“
 		MonoObject* obj = m_deletingObjects.front();
 		m_deletingObjects.pop();
-		// ²éÑ¯×Öµä¿´¿´ÎïÌåÊÇ·ñÒÑ¾­É¾³ı£¬±ÜÃâÖØ¸´É¾³ı
+		// æŸ¥è¯¢å­—å…¸çœ‹çœ‹ç‰©ä½“æ˜¯å¦å·²ç»åˆ é™¤ï¼Œé¿å…é‡å¤åˆ é™¤
 		map<MonoObject*, bool>::iterator iter = m_activeObjects.find(obj);
 		if (iter != m_activeObjects.end())
 		{
-			// ´Ó¸¸½ÚµãÒÆ³ı£¬±ÜÃâ¼ÌĞø×ß¸üĞÂÂß¼­
+			// ä»çˆ¶èŠ‚ç‚¹ç§»é™¤ï¼Œé¿å…ç»§ç»­èµ°æ›´æ–°é€»è¾‘
 			obj->removeFromParent();
 			m_activeObjects.erase(obj);
 			delete obj;
 		}
 	}
-	// ´´½¨µü´úÆ÷£¬×¼±¸Ö´ĞĞÆäËûÎïÌåµÄ¶¯×÷
+	// åˆ›å»ºè¿­ä»£å™¨ï¼Œå‡†å¤‡æ‰§è¡Œå…¶ä»–ç‰©ä½“çš„åŠ¨ä½œ
 	map<MonoObject*, bool>::iterator it; 
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
-		// Ö´ĞĞÎïÌåÖ¡¸üĞÂ
+		// æ‰§è¡Œç‰©ä½“å¸§æ›´æ–°
 		it->first->onFrameUpdate();
 		if (it->first->vx != 0 || it->first->vy != 0) m_moveingObjects.push(it->first);
 	}
-	// ¼ÆËãÎïÌåÒÆ¶¯
+	// è®¡ç®—ç‰©ä½“ç§»åŠ¨
 	calculateMove();
 }
 
@@ -78,35 +79,35 @@ void MonoSystem::DeleteObject(MonoObject* obj)
 
 void MonoSystem::calculateMove()
 {
-	// ±éÀúm_moveingObjects²¢»ñÈ¡ËûÃÇµÄËÙ¶Èv£¬À´¸ü¸ÄËûÃÇµÄÎ»ÖÃ
+	// éå†m_moveingObjectså¹¶è·å–ä»–ä»¬çš„é€Ÿåº¦vï¼Œæ¥æ›´æ”¹ä»–ä»¬çš„ä½ç½®
 	while (!m_moveingObjects.empty())
 	{
-		// Öğ¸ö»ñÈ¡×¼±¸ÒÆ¶¯µÄÎïÌå
+		// é€ä¸ªè·å–å‡†å¤‡ç§»åŠ¨çš„ç‰©ä½“
 		MonoObject* obj = m_moveingObjects.front();
 		m_moveingObjects.pop();
-		// ¼ÆËãµ±Ç°Ö¡Î»ÒÆ
+		// è®¡ç®—å½“å‰å¸§ä½ç§»
 		float x = obj->vx / Sceneconfig::GetInstance()->MaxFrame;
 		float y = obj->vy / Sceneconfig::GetInstance()->MaxFrame;
-		// ÎŞÅö×²Çé¿öÏÂÀíÏëµÄÔË¶¯Î»ÖÃ
+		// æ— ç¢°æ’æƒ…å†µä¸‹ç†æƒ³çš„è¿åŠ¨ä½ç½®
 		Utils::Rect address = Utils::Rect{ obj->getPosX() + x,obj->getPosY() + y ,
 											obj->getSize().width,obj->getSize().height};
 		
-		// »ñÈ¡ÀíÏëÔË¶¯Î»ÖÃ´¦ËùÓĞ¿ÉÄÜ»áÅöµ½µÄÎïÌå£¨¿É´©Ô½ÎïÌå²»¼ÆËã£©
+		// è·å–ç†æƒ³è¿åŠ¨ä½ç½®å¤„æ‰€æœ‰å¯èƒ½ä¼šç¢°åˆ°çš„ç‰©ä½“ï¼ˆå¯ç©¿è¶Šç‰©ä½“ä¸è®¡ç®—ï¼‰
 		vector<MonoObject*> crashObjs = caculateCrash(address);
 		MonoObject *crashObj_x= nullptr,*crashObj_y= nullptr;
-		// ·Ö±ğÕÒµ½xºÍy·½ÏòÉÏÅöµ½µÄµÚÒ»¸öÎïÌå
+		// åˆ†åˆ«æ‰¾åˆ°xå’Œyæ–¹å‘ä¸Šç¢°åˆ°çš„ç¬¬ä¸€ä¸ªç‰©ä½“
 		for (int i = 0; i < crashObjs.size(); i++)
 		{
 			MonoObject* it = crashObjs[i];
-			// ÅÅ³ı×ÔÉí
+			// æ’é™¤è‡ªèº«
 			if (it->GetHashID() == obj->GetHashID()) continue;
-			// x·½ÏòÉÏÅöµ½µÄµÚÒ»¸öÎïÌå
+			// xæ–¹å‘ä¸Šç¢°åˆ°çš„ç¬¬ä¸€ä¸ªç‰©ä½“
 			if (crashObj_x== nullptr ||
 				abs(crashObj_x->getPosX() - address.posx) < abs(it->getPosX() - address.posx))
 			{
 				crashObj_x = it;
 			}
-			// y·½ÏòÉÏÅöµ½µÄµÚÒ»¸öÎïÌå
+			// yæ–¹å‘ä¸Šç¢°åˆ°çš„ç¬¬ä¸€ä¸ªç‰©ä½“
 			if (crashObj_y == nullptr ||
 				abs(crashObj_y->getPosY() - address.posy) < abs(it->getPosY() - address.posy))
 			{
@@ -115,9 +116,9 @@ void MonoSystem::calculateMove()
 		}
 		if (crashObj_x != nullptr)
 		{
-			// Ìí¼Óµ½Åö×²µ¥Î»£¬key´ú±íÅö×²Õß£¬value´ú±í±»Åö×²Õß
+			// æ·»åŠ åˆ°ç¢°æ’å•ä½ï¼Œkeyä»£è¡¨ç¢°æ’è€…ï¼Œvalueä»£è¡¨è¢«ç¢°æ’è€…
 			m_crashObjects[make_pair(obj, crashObj_x)] = true;
-			// Èç¹ûÅö×²Õß²»¿É´©Ô½£¬Á½Õß¾ù»á²úÉúÅö×²
+			// å¦‚æœç¢°æ’è€…ä¸å¯ç©¿è¶Šï¼Œä¸¤è€…å‡ä¼šäº§ç”Ÿç¢°æ’
 			if (!obj->canThrough) m_crashObjects[make_pair(crashObj_x,obj)] = true;
 		}
 		if (crashObj_y != nullptr)
@@ -128,12 +129,12 @@ void MonoSystem::calculateMove()
 		if (obj->canThrough || 
 			(crashObj_x== nullptr && crashObj_y == nullptr))
 		{
-			// ¸Ä±äbodyµÄÎ»ÖÃ
+			// æ”¹å˜bodyçš„ä½ç½®
 			obj->setPos(address.posx,address.posy) ;
 		}
 		
 	}
-	// Ö´ĞĞÅö×²Ğ§¹û
+	// æ‰§è¡Œç¢°æ’æ•ˆæœ
 	noticeCrash(); 
 }
 
@@ -144,7 +145,7 @@ vector<MonoObject*> MonoSystem::caculateCrash(Utils::Rect address)
 	vector<MonoObject*> crashObjs;
 	map<MonoObject*, bool>::iterator it;
 	for (it = m_activeObjects.begin(); it != m_activeObjects.end(); it++) {
-		// ¼ÆËãËùÓĞ²»ÄÜ´©Ô½µÄÎïÌåµÄÅö×²Çé¿ö
+		// è®¡ç®—æ‰€æœ‰ä¸èƒ½ç©¿è¶Šçš„ç‰©ä½“çš„ç¢°æ’æƒ…å†µ
 		if (!it->first->canThrough && Utils::CrossLine(
 			it->first->GetBody(), address))
 		{
@@ -172,7 +173,7 @@ vector<MonoObject*> MonoSystem::getNewObjects()
 
 void MonoSystem::noticeCrash()
 {
-	// Èç¹ûnoticeMoveÅöµ½ÁË²»¿É´©Ô½ÎïÌå£¬Í¨ÖªËûÃÇÅöµ½ÁËÊ²Ã´
+	// å¦‚æœnoticeMoveç¢°åˆ°äº†ä¸å¯ç©¿è¶Šç‰©ä½“ï¼Œé€šçŸ¥ä»–ä»¬ç¢°åˆ°äº†ä»€ä¹ˆ
 	map<pair<MonoObject*, MonoObject*>, bool>::iterator it;
 	for (it =m_crashObjects.begin(); it != m_crashObjects.end(); it++) {
 		it->first.first->onCrash(it->first.second);

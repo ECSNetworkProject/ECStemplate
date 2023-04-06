@@ -1,4 +1,5 @@
-#include "SceneConfig.h"
+Ôªø#include "SceneConfig.h"
+
 
 
 Sceneconfig::Sceneconfig()
@@ -7,7 +8,7 @@ Sceneconfig::Sceneconfig()
 
 Sceneconfig* Sceneconfig::GetInstance()
 {
-	// ∂ˆ∫∫ Ω
+	// È•øÊ±âÂºè
 	static Sceneconfig m_Instance;
 	return &m_Instance;
 }

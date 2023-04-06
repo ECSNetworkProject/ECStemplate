@@ -1,6 +1,7 @@
-#pragma once
+ï»¿#pragma once
 #include "head.h"
 using namespace easy2d;
+
 
 enum objectType {
 	none,
@@ -9,38 +10,38 @@ enum objectType {
 	groud,
 	effect,
 	camera,
-	UI     //±êÇ©Ë³Ğò¾ö¶¨Ö´ĞĞË³Ğò
+	UI     //æ ‡ç­¾é¡ºåºå†³å®šæ‰§è¡Œé¡ºåº
 };
 
 /// <summary>
-/// ³¡¾°ÖĞµÄÎïÌå¶¼Òª¼Ì³Ğ
+/// åœºæ™¯ä¸­çš„ç‰©ä½“éƒ½è¦ç»§æ‰¿
 /// </summary>
 class MonoObject:virtual public Node
 {
 public:
-	// ÎïÌåÊı¾İ£¬·½±ãÆğ¼ûÖ±½Ó·Åmonoobject¾ÍĞĞ
+	// ç‰©ä½“æ•°æ®ï¼Œæ–¹ä¾¿èµ·è§ç›´æ¥æ”¾monoobjectå°±è¡Œ
 	int life = 5;
 	int score = 0;
 	Utils::Rect GetBody();
-	// ÎïÌåÒÆ¶¯ËÙ¶È£¬µ¥Î»·Ö±ğÎªm/s,Ã»ÓĞÒÆ¶¯ËÙ¶ÈµÄÎïÌå²»»áÖ÷¶¯²úÉúÅö×²
+	// ç‰©ä½“ç§»åŠ¨é€Ÿåº¦ï¼Œå•ä½åˆ†åˆ«ä¸ºm/s,æ²¡æœ‰ç§»åŠ¨é€Ÿåº¦çš„ç‰©ä½“ä¸ä¼šä¸»åŠ¨äº§ç”Ÿç¢°æ’
 	float vx = 0;
 	float vy = 0;
-	// ´ú±íÎïÌåÀàĞÍ
+	// ä»£è¡¨ç‰©ä½“ç±»å‹
 	objectType type=none;
-	// ÎïÌåÎ¨Ò»±àºÅ
+	// ç‰©ä½“å”¯ä¸€ç¼–å·
 	int GetHashID();
-	// ÄÜ·ñ´©Ô½,ÎªtrueÇé¿ö¿ÉÒÔ×²µ½ÆäËûÎïÌå£¬µ«²»ÄÜ±»ÆäËûÎïÌå×²µ½
+	// èƒ½å¦ç©¿è¶Š,ä¸ºtrueæƒ…å†µå¯ä»¥æ’åˆ°å…¶ä»–ç‰©ä½“ï¼Œä½†ä¸èƒ½è¢«å…¶ä»–ç‰©ä½“æ’åˆ°
 	bool canThrough = false;
-	// ÎïÌå´´½¨Ê±µ÷ÓÃ
+	// ç‰©ä½“åˆ›å»ºæ—¶è°ƒç”¨
 	virtual void onCreate();
-	// ÎïÌå·¢ÉúÅö×²Ê±µ÷ÓÃ
+	// ç‰©ä½“å‘ç”Ÿç¢°æ’æ—¶è°ƒç”¨
 	virtual void onCrash(MonoObject* collider);
-	// Ã¿Ö¡µ÷ÓÃ
+	// æ¯å¸§è°ƒç”¨
 	virtual void onFrameUpdate();
-	// ÓÑÔªº¯Êı£¬ÓÃÓÚĞŞ¸Ä¹şÏ£id
+	// å‹å…ƒå‡½æ•°ï¼Œç”¨äºä¿®æ”¹å“ˆå¸Œid
 	template <typename T>
 	friend T* CreateObject(Utils::Rect body);
-	// Îö¹¹º¯Êı
+	// ææ„å‡½æ•°
 	virtual ~MonoObject();
 protected:
 	MonoObject() = default;

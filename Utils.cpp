@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Utils.h"
 #include<io.h>
 #include <vector>
@@ -10,8 +10,9 @@
 #pragma comment(lib, "comsuppw.lib")
 using namespace std;
 
+
 namespace Utils {
-    // ¼ÆËãÅö×²
+    // è®¡ç®—ç¢°æ’
     bool CrossLine(Rect r1, Rect r2)
     {
 
@@ -25,7 +26,7 @@ namespace Utils {
     }
 
     template <typename T>
-    // ÌáÈ¡×Ö·û´®ÖĞµÄÊı×Ö
+    // æå–å­—ç¬¦ä¸²ä¸­çš„æ•°å­—
     int numberInStr(T temp, int startPos , int range )
     {
         int x = 0;
@@ -37,7 +38,7 @@ namespace Utils {
         }
         return x;
     }
-#pragma region ×Ö·ûÀàĞÍ×ª»»
+#pragma region å­—ç¬¦ç±»å‹è½¬æ¢
     string ws2s(const wstring& ws)
     {
         _bstr_t t = ws.c_str();
@@ -53,25 +54,25 @@ namespace Utils {
         wstring result = pwchar;
         return result;
     }
-    // ×Ö·û×ª»»
+    // å­—ç¬¦è½¬æ¢
     void Wchar_tToString(std::string& szDst, const wchar_t* wText)
     {
-        DWORD dwNum = WideCharToMultiByte(CP_OEMCP, NULL, wText, -1, NULL, 0, NULL, FALSE);//WideCharToMultiByteµÄÔËÓÃ
-        char* psText;  // psTextÎªchar*µÄÁÙÊ±Êı×é£¬×÷Îª¸³Öµ¸østd::stringµÄÖĞ¼ä±äÁ¿
+        DWORD dwNum = WideCharToMultiByte(CP_OEMCP, NULL, wText, -1, NULL, 0, NULL, FALSE);//WideCharToMultiByteçš„è¿ç”¨
+        char* psText;  // psTextä¸ºchar*çš„ä¸´æ—¶æ•°ç»„ï¼Œä½œä¸ºèµ‹å€¼ç»™std::stringçš„ä¸­é—´å˜é‡
         psText = new char[dwNum];
-        WideCharToMultiByte(CP_OEMCP, NULL, wText, -1, psText, dwNum, NULL, FALSE);//WideCharToMultiByteµÄÔÙ´ÎÔËÓÃ
-        szDst = psText;// std::string¸³Öµ
-        delete[]psText;// psTextµÄÇå³ı
+        WideCharToMultiByte(CP_OEMCP, NULL, wText, -1, psText, dwNum, NULL, FALSE);//WideCharToMultiByteçš„å†æ¬¡è¿ç”¨
+        szDst = psText;// std::stringèµ‹å€¼
+        delete[]psText;// psTextçš„æ¸…é™¤
     }
 
-    //²»ÒªÍü¼ÇÔÚÊ¹ÓÃÍêwchar_t*ºódelete[]ÊÍ·ÅÄÚ´æ
+    //ä¸è¦å¿˜è®°åœ¨ä½¿ç”¨å®Œwchar_t*ådelete[]é‡Šæ”¾å†…å­˜
     wchar_t* multiByteToWideChar(const string& pKey)
     {
         auto pCStrKey = pKey.c_str();
-        //µÚÒ»´Îµ÷ÓÃ·µ»Ø×ª»»ºóµÄ×Ö·û´®³¤¶È£¬ÓÃÓÚÈ·ÈÏÎªwchar_t*¿ª±Ù¶à´óµÄÄÚ´æ¿Õ¼ä
+        //ç¬¬ä¸€æ¬¡è°ƒç”¨è¿”å›è½¬æ¢åçš„å­—ç¬¦ä¸²é•¿åº¦ï¼Œç”¨äºç¡®è®¤ä¸ºwchar_t*å¼€è¾Ÿå¤šå¤§çš„å†…å­˜ç©ºé—´
         int pSize = MultiByteToWideChar(CP_OEMCP, 0, pCStrKey, strlen(pCStrKey) + 1, NULL, 0);
         wchar_t* pWCStrKey = new wchar_t[pSize];
-        //µÚ¶ş´Îµ÷ÓÃ½«µ¥×Ö½Ú×Ö·û´®×ª»»³ÉË«×Ö½Ú×Ö·û´®
+        //ç¬¬äºŒæ¬¡è°ƒç”¨å°†å•å­—èŠ‚å­—ç¬¦ä¸²è½¬æ¢æˆåŒå­—èŠ‚å­—ç¬¦ä¸²
         MultiByteToWideChar(CP_OEMCP, 0, pCStrKey, strlen(pCStrKey) + 1, pWCStrKey, pSize);
         return pWCStrKey;
     }
@@ -81,7 +82,7 @@ namespace Utils {
         int x = numberInStr(a), y = numberInStr(a);
         return x < y;
     }
-    // ²éÕÒÄ¿Â¼ÄÚ°üº¬Ö¸¶¨Ãû³ÆµÄÎÄ¼ş
+    // æŸ¥æ‰¾ç›®å½•å†…åŒ…å«æŒ‡å®šåç§°çš„æ–‡ä»¶
     vector<wstring> FindAnimationFiles(string path, string containStr)
     {
 
@@ -94,7 +95,7 @@ namespace Utils {
             int index = fileName.find(containStr);
             if (index < fileName.length())
             {
-                // ÅÅ³ıÄ©Î²Ã»ÓĞÊı×ÖµÄÎÄ¼ş
+                // æ’é™¤æœ«å°¾æ²¡æœ‰æ•°å­—çš„æ–‡ä»¶
                 if (fileName[index + containStr.length()] < '0' ||
                     fileName[index + containStr.length()] >'9') continue;
                 rev.push_back(s2ws(path + "/" + fileName));
@@ -102,7 +103,7 @@ namespace Utils {
 
         } while (_findnext(hFile, &fileInfo) == 0);
         sort(rev.begin(), rev.end(), CmpAnimationFile);
-        //¹Ø±ÕÎÄ¼ş¾ä±ú  
+        //å…³é—­æ–‡ä»¶å¥æŸ„  
         _findclose(hFile);
         return rev;
     }

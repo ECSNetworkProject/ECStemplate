@@ -1,11 +1,12 @@
-#pragma once
+ï»¿#pragma once
 #include "head.h"
 #include <fstream>
 #include <iostream>
 #include "head.h"
 
+
 using namespace std;
-// ÅäÖÃÈ«¾Ö±äÁ¿Óë¾²Ì¬ĞÅÏ¢
+// é…ç½®å…¨å±€å˜é‡ä¸é™æ€ä¿¡æ¯
 class Sceneconfig
 {
 public:

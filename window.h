@@ -1,8 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 #include "Button.h"
 #include "Utils.h"
-#include "ÒôÀÖºĞ.h"
+#include "éŸ³ä¹ç›’.h"
+
 
 class GameWindow:public MonoObject
 {
@@ -11,8 +12,8 @@ public:
 	void musicMenu();
 	void onFrameUpdate();
 private:
-	// ¼ÇÂ¼ÒôÀÖºĞÖ¸ÕëÓëÒôÀÖºĞ×´Ì¬
-	vector<ÒôÀÖºĞ*> musicboxes;
-	// ¼ÇÂ¼¿ªÆôµÄÒôÀÖºĞ
-	ÒôÀÖºĞ* openingMusicbox;
+	// è®°å½•éŸ³ä¹ç›’æŒ‡é’ˆä¸éŸ³ä¹ç›’çŠ¶æ€
+	vector<éŸ³ä¹ç›’*> musicboxes;
+	// è®°å½•å¼€å¯çš„éŸ³ä¹ç›’
+	éŸ³ä¹ç›’* openingMusicbox;
 };

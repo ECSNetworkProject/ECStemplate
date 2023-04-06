@@ -1,5 +1,6 @@
-#include "coin.h"
+﻿#include "coin.h"
 #include "MonoSystem.h"
+
 
 void coin::onCreate()
 {

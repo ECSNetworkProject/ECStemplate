@@ -1,9 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include<io.h>
 #include <vector>
 #include<iostream>
 #include <string>
 using namespace std;
+
 
 namespace Utils {
     const float EQS = 1e-6;
@@ -12,23 +13,23 @@ namespace Utils {
         float posx, posy;
         float width, height;        // Point 2
     };
-    // ¼ÆËãÅö×²
+    // è®¡ç®—ç¢°æ’
     bool CrossLine(Rect r1, Rect r2);
 
     template <typename T>
-    // ÌáÈ¡×Ö·û´®ÖĞµÄÊı×Ö
+    // æå–å­—ç¬¦ä¸²ä¸­çš„æ•°å­—
     int numberInStr(T temp, int startPos = 0, int range = 0);
-#pragma region ×Ö·ûÀàĞÍ×ª»»
+#pragma region å­—ç¬¦ç±»å‹è½¬æ¢
     string ws2s(const wstring& ws);
 
     wstring s2ws(const string& s);
-    // ×Ö·û×ª»»
+    // å­—ç¬¦è½¬æ¢
     void Wchar_tToString(std::string& szDst, const wchar_t* wText);
 
-    //²»ÒªÍü¼ÇÔÚÊ¹ÓÃÍêwchar_t*ºódelete[]ÊÍ·ÅÄÚ´æ
+    //ä¸è¦å¿˜è®°åœ¨ä½¿ç”¨å®Œwchar_t*ådelete[]é‡Šæ”¾å†…å­˜
     wchar_t* multiByteToWideChar(const string& pKey);
 #pragma endregion
     bool CmpAnimationFile(wstring a, wstring b);
-    // ²éÕÒÄ¿Â¼ÄÚ°üº¬Ö¸¶¨Ãû³ÆµÄÎÄ¼ş
+    // æŸ¥æ‰¾ç›®å½•å†…åŒ…å«æŒ‡å®šåç§°çš„æ–‡ä»¶
     vector<wstring> FindAnimationFiles(string path, string containStr);
 }

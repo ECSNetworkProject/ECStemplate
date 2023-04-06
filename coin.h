@@ -1,5 +1,6 @@
-#pragma once
+﻿#pragma once
 #include "MonoObject.h"
+
 class coin :public MonoObject
 {
 public:

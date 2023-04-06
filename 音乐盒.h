@@ -1,8 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "button.h"
 #include"NetworkObject.h"
-// ÁâĞÎ¼Ì³Ğ
-class ÒôÀÖºĞ :public CustomButton,public NetworkObject
+
+// è±å½¢ç»§æ‰¿
+class éŸ³ä¹ç›’ :public CustomButton,public NetworkObject
 {
 public:
 	string NowMusic;
